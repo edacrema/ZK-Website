@@ -97,9 +97,9 @@
   font-size:1.4rem; margin-bottom:18px; width:46px; height:46px;
   border-radius:10px; display:flex; align-items:center; justify-content:center;
 }
-.pi-t { background:rgba(0,221,180,.1) }
-.pi-v { background:rgba(139,130,255,.1) }
-.pi-c { background:rgba(255,110,110,.1) }
+.pi-t { background:rgba(0,184,148,.12) }
+.pi-v { background:rgba(108,99,255,.1) }
+.pi-c { background:rgba(255,107,107,.1) }
 .pillar-title {
   font-family:var(--D); font-weight:700; font-size:1.15rem;
   letter-spacing:-.015em; margin-bottom:10px;
@@ -109,9 +109,9 @@
   text-transform:uppercase; padding:3px 8px; border-radius:4px;
   margin-bottom:14px; width:fit-content;
 }
-.pt-t { background:rgba(0,221,180,.1);   color:var(--teal) }
-.pt-v { background:rgba(139,130,255,.12); color:#b0acff }
-.pt-c { background:rgba(255,110,110,.1);  color:#ff9494 }
+.pt-t { background:rgba(0,184,148,.1);   color:var(--teal) }
+.pt-v { background:rgba(108,99,255,.1);   color:var(--violet) }
+.pt-c { background:rgba(255,107,107,.1);  color:var(--coral) }
 .pillar-desc {
   font-family:var(--I); font-size:.95rem; color:var(--dim);
   line-height:1.68; flex-grow:1; margin-bottom:28px;
@@ -122,8 +122,8 @@
   transition:color .2s, gap .2s;
 }
 .pillar-card.p1:hover .pillar-link { color:var(--teal); gap:12px }
-.pillar-card.p2:hover .pillar-link { color:#b0acff;     gap:12px }
-.pillar-card.p3:hover .pillar-link { color:#ff9494;     gap:12px }
+.pillar-card.p2:hover .pillar-link { color:var(--violet); gap:12px }
+.pillar-card.p3:hover .pillar-link { color:var(--coral);  gap:12px }
 
 /* ── RAVENMOOR ── */
 #ravenmoor-sec { border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
@@ -133,10 +133,10 @@
   background:var(--card); border:1px solid var(--border);
   border-radius:10px; padding:22px 26px; transition:border-color .25s;
 }
-.rv-stat:hover { border-color:rgba(139,130,255,.3) }
+.rv-stat:hover { border-color:rgba(108,99,255,.3) }
 .rv-stat-n {
   font-family:var(--D); font-weight:800; font-size:1.65rem;
-  color:#b0acff; display:block; line-height:1; margin-bottom:5px;
+  color:var(--violet); display:block; line-height:1; margin-bottom:5px;
 }
 .rv-stat-l {
   font-family:var(--M); font-size:.6rem; letter-spacing:.1em;
@@ -145,8 +145,8 @@
 .rv-tag {
   display:inline-flex; align-items:center; gap:7px;
   font-family:var(--M); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
-  color:#b0acff; background:rgba(139,130,255,.1);
-  border:1px solid rgba(139,130,255,.2);
+  color:var(--violet); background:rgba(108,99,255,.08);
+  border:1px solid rgba(108,99,255,.18);
   padding:5px 12px; border-radius:20px; margin-bottom:22px; width:fit-content;
 }
 .rv-tag::before { content:'◆'; font-size:.5rem }

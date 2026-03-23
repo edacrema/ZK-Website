@@ -4,20 +4,20 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
-  --black:   #06060a;
-  --deep:    #0a0a10;
-  --surface: #0e0e17;
-  --card:    #111119;
-  --card-h:  #131320;
-  --border:  rgba(255,255,255,.07);
-  --border2: rgba(255,255,255,.04);
-  --teal:    #00ddb4;
-  --violet:  #8b82ff;
-  --coral:   #ff6e6e;
-  --gold:    #f0c040;
-  --white:   #eeeef5;
-  --dim:     rgba(238,238,245,.44);
-  --dim2:    rgba(238,238,245,.22);
+  --black:   #ffffff;
+  --deep:    #f4f8f7;
+  --surface: #eef3f2;
+  --card:    #ffffff;
+  --card-h:  #f0faf7;
+  --border:  rgba(0,0,0,.08);
+  --border2: rgba(0,0,0,.04);
+  --teal:    #00b894;
+  --violet:  #6c63ff;
+  --coral:   #ff6b6b;
+  --gold:    #e2a813;
+  --white:   #1c2d3a;
+  --dim:     rgba(28,45,58,.55);
+  --dim2:    rgba(28,45,58,.30);
   --D: 'Syne', sans-serif;
   --M: 'DM Mono', monospace;
   --I: 'Instrument Serif', serif;
@@ -49,7 +49,7 @@ nav {
   transition:background .45s, border-color .45s;
 }
 nav.sc {
-  background:rgba(6,6,10,.9);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
   border-color:var(--border);
 }
@@ -69,7 +69,7 @@ nav.sc {
 }
 .nav-a:hover, .nav-a.active { color:var(--white) }
 .lswitch {
-  display:flex; background:rgba(255,255,255,.05);
+  display:flex; background:rgba(0,0,0,.04);
   border:1px solid var(--border); border-radius:6px;
   overflow:hidden; padding:2px; gap:2px;
 }
@@ -79,7 +79,7 @@ nav.sc {
   border:none; background:transparent; color:var(--dim);
   cursor:pointer; border-radius:4px; transition:all .2s;
 }
-.lbtn.on { background:var(--teal); color:var(--black) }
+.lbtn.on { background:var(--teal); color:#fff }
 
 /* ── HAMBURGER ── */
 .hamburger {
@@ -91,6 +91,7 @@ nav.sc {
   display:block; width:22px; height:1.5px; background:var(--white);
   transition:all .3s;
 }
+
 .hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(4.5px,4.5px) }
 .hamburger.open span:nth-child(2) { opacity:0 }
 .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4.5px,-4.5px) }
@@ -98,7 +99,7 @@ nav.sc {
 /* ── MOBILE NAV OVERLAY ── */
 .mobile-nav {
   display:none; position:fixed; inset:0; z-index:350;
-  background:rgba(6,6,10,.97); backdrop-filter:blur(24px);
+  background:rgba(255,255,255,.97); backdrop-filter:blur(24px);
   flex-direction:column; align-items:center; justify-content:center; gap:32px;
 }
 .mobile-nav.open { display:flex }
@@ -130,7 +131,7 @@ section { position:relative; z-index:1 }
 /* ── BUTTONS ── */
 .btn-primary {
   font-family:var(--M); font-size:.73rem; letter-spacing:.05em; font-weight:500;
-  padding:13px 26px; background:var(--teal); color:var(--black);
+  padding:13px 26px; background:var(--teal); color:#fff;
   border:none; border-radius:6px; cursor:pointer; display:inline-block;
   transition:opacity .2s, transform .2s;
 }
@@ -144,9 +145,9 @@ section { position:relative; z-index:1 }
 .btn-ghost:hover { color:var(--white); border-color:rgba(255,255,255,.2); transform:translateY(-1px) }
 
 /* Button color variants */
-.btn-violet { background:var(--violet); color:var(--black) }
-.btn-coral  { background:var(--coral);  color:var(--black) }
-.btn-gold   { background:var(--gold);   color:var(--black) }
+.btn-violet { background:var(--violet); color:#fff }
+.btn-coral  { background:var(--coral);  color:#fff }
+.btn-gold   { background:var(--gold);   color:#fff }
 
 /* ── FOOTER ── */
 footer {

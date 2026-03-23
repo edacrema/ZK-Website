@@ -23,7 +23,7 @@
   function draw() {
     ctx.clearRect(0, 0, W, H);
     // grid
-    ctx.strokeStyle = 'rgba(0,221,180,.028)';
+    ctx.strokeStyle = 'rgba(0,184,148,.06)';
     ctx.lineWidth = 1;
     const g = 76;
     for (let x = 0; x < W; x += g) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
@@ -35,7 +35,7 @@
         const d = Math.sqrt(dx * dx + dy * dy);
         if (d < 115) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,221,180,${.048 * (1 - d / 115)})`;
+          ctx.strokeStyle = `rgba(0,184,148,${.09 * (1 - d / 115)})`;
           ctx.lineWidth = .5;
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
@@ -49,7 +49,7 @@
       if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,221,180,${p.a})`;
+      ctx.fillStyle = `rgba(0,184,148,${p.a * .7})`;
       ctx.fill();
     });
     raf = requestAnimationFrame(draw);

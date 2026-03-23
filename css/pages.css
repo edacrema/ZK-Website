@@ -107,16 +107,16 @@
   background:var(--card); border:1px solid var(--border);
   border-radius:10px; padding:22px 26px; transition:border-color .25s;
 }
-.stat-card:hover { border-color:rgba(0,221,180,.3) }
-.stat-card.accent-violet:hover { border-color:rgba(139,130,255,.3) }
-.stat-card.accent-coral:hover  { border-color:rgba(255,110,110,.3) }
-.stat-card.accent-gold:hover   { border-color:rgba(240,192,64,.3) }
+.stat-card:hover { border-color:rgba(0,184,148,.3) }
+.stat-card.accent-violet:hover { border-color:rgba(108,99,255,.3) }
+.stat-card.accent-coral:hover  { border-color:rgba(255,107,107,.3) }
+.stat-card.accent-gold:hover   { border-color:rgba(226,168,19,.3) }
 .stat-n {
   font-family:var(--D); font-weight:800; font-size:1.65rem;
   color:var(--teal); display:block; line-height:1; margin-bottom:5px;
 }
-.stat-card.accent-violet .stat-n { color:#b0acff }
-.stat-card.accent-coral  .stat-n { color:#ff9494 }
+.stat-card.accent-violet .stat-n { color:var(--violet) }
+.stat-card.accent-coral  .stat-n { color:var(--coral) }
 .stat-card.accent-gold   .stat-n { color:var(--gold) }
 .stat-l {
   font-family:var(--M); font-size:.6rem; letter-spacing:.1em;
@@ -129,10 +129,10 @@
   font-family:var(--M); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
   padding:5px 12px; border-radius:20px; width:fit-content;
 }
-.tag-teal   { color:var(--teal);  background:rgba(0,221,180,.1);   border:1px solid rgba(0,221,180,.2) }
-.tag-violet { color:#b0acff;      background:rgba(139,130,255,.1); border:1px solid rgba(139,130,255,.2) }
-.tag-coral  { color:#ff9494;      background:rgba(255,110,110,.1); border:1px solid rgba(255,110,110,.2) }
-.tag-gold   { color:var(--gold);  background:rgba(240,192,64,.1);  border:1px solid rgba(240,192,64,.2) }
+.tag-teal   { color:var(--teal);   background:rgba(0,184,148,.1);   border:1px solid rgba(0,184,148,.2) }
+.tag-violet { color:var(--violet); background:rgba(108,99,255,.1);  border:1px solid rgba(108,99,255,.2) }
+.tag-coral  { color:var(--coral);  background:rgba(255,107,107,.1); border:1px solid rgba(255,107,107,.2) }
+.tag-gold   { color:var(--gold);   background:rgba(226,168,19,.1);  border:1px solid rgba(226,168,19,.2) }
 
 /* ── HIGHLIGHT BLOCK ── */
 .highlight-block {
@@ -212,6 +212,7 @@
 .compare-col.col-violet li::before { background:var(--violet) }
 .compare-col.col-teal li::before   { background:var(--teal) }
 
+
 /* ── CONTACT FORM ── */
 .contact-form {
   display:flex; flex-direction:column; gap:20px;
@@ -262,7 +263,7 @@
   border-radius:12px; padding:32px 28px;
   transition:border-color .25s, background .25s;
 }
-.article-card:hover { border-color:rgba(240,192,64,.3); background:var(--card-h) }
+.article-card:hover { border-color:rgba(226,168,19,.3); background:var(--card-h) }
 .article-date {
   font-family:var(--M); font-size:.58rem; letter-spacing:.1em;
   text-transform:uppercase; color:var(--dim2); margin-bottom:12px;
