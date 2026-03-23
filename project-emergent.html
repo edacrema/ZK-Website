@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Emergent — ZetaKappa Futures</title>
+  <meta name="description" content="EMERGENT.engine: sistemi AI multi-agente dove il comportamento collettivo non è programmato — emerge. Dall'intrattenimento all'enterprise, un'architettura per agenti autonomi con obiettivi, credenze e la capacità di sorprendere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body data-page="emergent">
+  <canvas id="cvs"></canvas>
+  <div id="nav-slot"></div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="page-hero accent-violet">
+    <div class="hero-label">EMERGENT.engine</div>
+    <h1>Project Emergent</h1>
+    <p class="hero-subtitle">
+      <span data-it>Sistemi AI multi-agente dove il comportamento collettivo non è programmato — <em>emerge</em>. Dall'intrattenimento all'enterprise, un'unica architettura alimenta agenti autonomi con obiettivi, credenze e la capacità di sorprendere.</span>
+      <span data-en>Multi-agent AI systems where collective behavior isn't programmed — it <em>emerges</em>. From entertainment to enterprise, one architecture powers autonomous agents with goals, beliefs, and the capacity to surprise.</span>
+    </p>
+    <div class="hero-cta">
+      <a href="#ravenmoor" class="btn-primary" style="background:var(--violet)">
+        <span data-it>Scopri Ravenmoor</span>
+        <span data-en>Discover Ravenmoor</span>
+      </a>
+      <a href="#brainstorm" class="btn-ghost">
+        <span data-it>Esplora BrainStorm</span>
+        <span data-en>Explore BrainStorm</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ARCHITECTURE OVERVIEW ═══════════════ -->
+  <section class="content-sec bg-deep">
+    <div class="sec-inner">
+      <div class="fu">
+        <div class="sec-label">
+          <span data-it>Architettura</span>
+          <span data-en>Architecture</span>
+        </div>
+        <h2 class="sec-h2">
+          <span data-it>Il cuore dell'engine: il <span class="v">Triple Truth System</span></span>
+          <span data-en>The engine's core: the <span class="v">Triple Truth System</span></span>
+        </h2>
+        <p style="font-family:var(--I);font-size:1rem;color:var(--dim);line-height:1.7;max-width:70ch;margin-bottom:48px;">
+          <span data-it>L'architettura EMERGENT.engine si basa su tre livelli di verità che governano come l'informazione nasce, si degrada e si propaga tra agenti autonomi. Nessun agente vede il quadro completo — e questo è il punto.</span>
+          <span data-en>The EMERGENT.engine architecture is built on three layers of truth that govern how information is created, decays, and propagates among autonomous agents. No agent sees the full picture — and that's the point.</span>
+        </p>
+      </div>
+
+      <!-- Triple Truth SVG Diagram -->
+      <div class="diagram-wrap fu" style="margin-bottom:48px;">
+        <svg viewBox="0 0 600 380" width="600" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connection lines -->
+          <line x1="300" y1="72" x2="130" y2="280" stroke="rgba(255,255,255,.1)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <line x1="300" y1="72" x2="470" y2="280" stroke="rgba(255,255,255,.1)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <line x1="130" y1="280" x2="470" y2="280" stroke="rgba(255,255,255,.1)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+          <!-- Shared Knowledge (top) -->
+          <circle cx="300" cy="64" r="44" fill="rgba(238,238,245,.06)" stroke="rgba(238,238,245,.25)" stroke-width="1.5"/>
+          <text x="300" y="58" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#eeeef5" font-weight="500">SHARED</text>
+          <text x="300" y="74" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#eeeef5" font-weight="500">KNOWLEDGE</text>
+
+          <!-- World Truth (bottom-left) -->
+          <circle cx="130" cy="280" r="44" fill="rgba(0,221,180,.06)" stroke="rgba(0,221,180,.35)" stroke-width="1.5"/>
+          <text x="130" y="274" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#00ddb4" font-weight="500">WORLD</text>
+          <text x="130" y="290" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#00ddb4" font-weight="500">TRUTH</text>
+
+          <!-- Agent Beliefs (bottom-right) -->
+          <circle cx="470" cy="280" r="44" fill="rgba(139,130,255,.06)" stroke="rgba(139,130,255,.35)" stroke-width="1.5"/>
+          <text x="470" y="274" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#b0acff" font-weight="500">AGENT</text>
+          <text x="470" y="290" text-anchor="middle" font-size="10" letter-spacing=".08em" fill="#b0acff" font-weight="500">BELIEFS</text>
+
+          <!-- Annotations -->
+          <text x="300" y="130" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.35)" letter-spacing=".05em">
+            <tspan data-it>Promossa quando 2+ agenti convergono</tspan>
+            <tspan data-en>Promoted when 2+ agents converge</tspan>
+          </text>
+          <text x="90" y="346" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.35)" letter-spacing=".05em">
+            <tspan data-it>Fatti oggettivi del mondo</tspan>
+            <tspan data-en>Objective world facts</tspan>
+          </text>
+          <text x="510" y="346" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.35)" letter-spacing=".05em">
+            <tspan data-it>Certezza per-agente con decadimento</tspan>
+            <tspan data-en>Per-agent certainty with decay</tspan>
+          </text>
+
+          <!-- Directional arrows on edges -->
+          <text x="190" y="168" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.2)" letter-spacing=".04em">↑ promote</text>
+          <text x="415" y="168" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.2)" letter-spacing=".04em">↑ promote</text>
+          <text x="300" y="300" text-anchor="middle" font-size="9" fill="rgba(238,238,245,.2)" letter-spacing=".04em">observe → believe</text>
+        </svg>
+      </div>
+
+      <!-- Bullet points -->
+      <div class="features-grid fu">
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🔻</div>
+          <h3>Belief Decay</h3>
+          <p>
+            <span data-it>La certezza di ogni credenza si erode ad ogni round. Se un agente non riceve conferme, le sue convinzioni svaniscono — esattamente come nella realtà.</span>
+            <span data-en>Each belief's certainty erodes every round. If an agent doesn't receive confirmation, their convictions fade — just like in reality.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🎯</div>
+          <h3>
+            <span data-it>Comportamento goal-directed</span>
+            <span data-en>Goal-directed behavior</span>
+          </h3>
+          <p>
+            <span data-it>Ogni agente attraversa fasi: stabilire posizioni, difenderle, fare concessioni, ridirigere. I goal guidano l'azione, non uno script.</span>
+            <span data-en>Agents move through phases: establishing positions, defending them, making concessions, redirecting. Goals drive action, not a script.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🔒</div>
+          <h3>
+            <span data-it>Informazione asimmetrica</span>
+            <span data-en>Asymmetric information</span>
+          </h3>
+          <p>
+            <span data-it>Nessun agente vede il quadro completo. La conoscenza è frammentata, le alleanze nascono da inferenze imperfette, e la verità è sempre parziale.</span>
+            <span data-en>No agent sees the full picture. Knowledge is fragmented, alliances form from imperfect inferences, and truth is always partial.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RAVENMOOR ═══════════════ -->
+  <section id="ravenmoor" class="content-sec">
+    <div class="sec-inner">
+      <div class="fu">
+        <span class="tag tag-violet">
+          <span data-it>Primo Live Book al mondo · Proof of Concept</span>
+          <span data-en>World's First Live Book · Proof of Concept</span>
+        </span>
+      </div>
+
+      <div class="split fu" style="margin-top:48px;">
+        <!-- Left: description -->
+        <div>
+          <h2 class="sec-h2">
+            <span data-it>I Misteri di <span class="v">Ravenmoor</span></span>
+            <span data-en>The Mysteries of <span class="v">Ravenmoor</span></span>
+          </h2>
+          <p style="font-family:var(--I);font-size:1rem;color:var(--dim);line-height:1.7;max-width:60ch;margin-bottom:24px;">
+            <span data-it>Un thriller gotico ambientato in una villa inglese nel 1987. Otto NPC autonomi con segreti, agende e relazioni proprie. Il mondo vive anche dove il giocatore non guarda: personaggi si muovono, tramano, si accusano a vicenda. Al termine della partita, l'engine genera un romanzo completo — tutto ciò che hai visto, e tutto ciò che ti sei perso.</span>
+            <span data-en>A gothic thriller set in an English manor in 1987. Eight autonomous NPCs with their own secrets, agendas, and relationships. The world lives even where the player isn't looking: characters move, conspire, accuse each other. At the end, the engine generates a complete novel — everything you witnessed, and everything you missed.</span>
+          </p>
+          <p style="font-family:var(--M);font-size:.7rem;letter-spacing:.06em;color:var(--dim2);margin-bottom:32px;">
+            <span data-it>Costruito su</span>
+            <span data-en>Built on</span>
+            <span style="color:var(--violet)"> EMERGENT.engine</span>
+          </p>
+        </div>
+        <!-- Right: cover + stats -->
+        <div>
+          <img src="images/intestazione.jpg" alt="Ravenmoor — I Misteri di Ravenmoor" style="border-radius:12px;margin-bottom:24px;" loading="lazy">
+          <div class="stats-row">
+            <div class="stat-card accent-violet">
+              <span class="stat-n">8</span>
+              <span class="stat-l">
+                <span data-it>NPC autonomi</span>
+                <span data-en>Autonomous NPCs</span>
+              </span>
+            </div>
+            <div class="stat-card accent-violet">
+              <span class="stat-n">3</span>
+              <span class="stat-l">
+                <span data-it>Lingue: IT / EN / DE</span>
+                <span data-en>Languages: IT / EN / DE</span>
+              </span>
+            </div>
+            <div class="stat-card accent-violet">
+              <span class="stat-n">∞</span>
+              <span class="stat-l">
+                <span data-it>Partite uniche</span>
+                <span data-en>Unique playthroughs</span>
+              </span>
+            </div>
+            <div class="stat-card accent-violet">
+              <span class="stat-n" style="font-size:.82rem;font-family:var(--M);letter-spacing:.04em">LIVE BOOK</span>
+              <span class="stat-l">
+                <span data-it>Nuovo formato narrativo</span>
+                <span data-en>New narrative format</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ravenmoor features grid -->
+      <div class="features-grid fu" style="margin-top:56px;">
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🧠</div>
+          <h3>
+            <span data-it>NPC autonomi</span>
+            <span data-en>Autonomous NPCs</span>
+          </h3>
+          <p>
+            <span data-it>Memoria, credenze, agende. Ogni personaggio prende decisioni indipendenti basate sul proprio stato interno e sulle informazioni che possiede.</span>
+            <span data-en>Memory, beliefs, agendas. Each character makes independent decisions based on their internal state and the information they hold.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🔄</div>
+          <h3>Dual Round System</h3>
+          <p>
+            <span data-it>Prima agiscono gli NPC, poi risponde il giocatore. Il comportamento emergente è reattivo: il mondo si muove anche senza input.</span>
+            <span data-en>NPCs act first, then the player responds. Emergent behavior is reactive: the world moves even without input.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon pi-v">📖</div>
+          <h3>Live Book</h3>
+          <p>
+            <span data-it>Al termine della partita, l'engine genera un romanzo completo di tutto ciò che è accaduto — incluso ciò che il giocatore non ha visto.</span>
+            <span data-en>At game end, the engine generates a complete novel of everything that happened — including what the player never saw.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon pi-v">🔮</div>
+          <h3>Triple Truth</h3>
+          <p>
+            <span data-it>Ogni personaggio ha le proprie credenze e certezze — la conoscenza non è mai condivisa gratuitamente. L'informazione ha un costo.</span>
+            <span data-en>Each character has their own beliefs and certainties — knowledge is never shared for free. Information has a cost.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BRAINSTORM ═══════════════ -->
+  <section id="brainstorm" class="content-sec bg-deep">
+    <div class="sec-inner">
+      <div class="fu">
+        <span class="tag tag-teal">
+          <span data-it>BrainStorm · Deliberazione Strategica</span>
+          <span data-en>BrainStorm · Strategic Deliberation</span>
+        </span>
+        <h2 class="sec-h2" style="margin-top:28px;">
+          <span class="t">BrainStorm</span>
+        </h2>
+        <p style="font-family:var(--I);font-size:1rem;color:var(--dim);line-height:1.7;max-width:70ch;margin-bottom:48px;">
+          <span data-it>Engine di deliberazione strategica che carica profili esperti con interessi nascosti, esegue round di deliberazione basati su grafi, e produce documenti di scenario. Gli esperti contestano le affermazioni altrui, difendono posizioni, fanno concessioni — mentre il sistema rileva fenomeni emergenti come consenso inaspettato o conflitto produttivo.</span>
+          <span data-en>Strategic deliberation engine that loads expert profiles with hidden interests, runs graph-based deliberation rounds, and produces scenario documents. Experts challenge each other's claims, defend positions, make concessions — while the system detects emergent phenomena like unexpected consensus or productive conflict.</span>
+        </p>
+      </div>
+
+      <div class="features-grid fu">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,221,180,.12)">💬</div>
+          <h3>Claim Lifecycle</h3>
+          <p>
+            <span data-it>Le affermazioni progrediscono da asserite → contestate → rinforzate / concesse. Un ciclo di vita che rispecchia la deliberazione reale.</span>
+            <span data-en>Claims progress from asserted → challenged → contested / reinforced / conceded. A lifecycle that mirrors real deliberation.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,221,180,.12)">🎭</div>
+          <h3>
+            <span data-it>Interessi nascosti</span>
+            <span data-en>Hidden Interests</span>
+          </h3>
+          <p>
+            <span data-it>Ogni esperto ha obiettivi privati e posizioni pubbliche — orientando il dibattito verso la propria agenda senza che gli altri lo sappiano.</span>
+            <span data-en>Each expert has private goals and public positions — steering debate toward their agenda without others knowing.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,221,180,.12)">🌐</div>
+          <h3>Web Search</h3>
+          <p>
+            <span data-it>Integrazione opzionale con Brave Search per il fact-grounding durante la deliberazione. Gli esperti possono verificare le affermazioni in tempo reale.</span>
+            <span data-en>Optional Brave Search integration for fact-grounding during deliberation. Experts can verify claims in real time.</span>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,221,180,.12)">✨</div>
+          <h3>
+            <span data-it>Fenomeni emergenti</span>
+            <span data-en>Emergent Phenomena</span>
+          </h3>
+          <p>
+            <span data-it>Il sistema rileva consenso inaspettato, conflitto produttivo, insight cross-domain e deadlock — fenomeni che nessuno ha programmato.</span>
+            <span data-en>The system detects unexpected consensus, productive conflict, cross-domain insights, and deadlocks — phenomena no one programmed.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-block hl-teal fu" style="margin-top:48px;">
+        <h3 style="color:var(--teal)">
+          <span data-it>Pipeline tecnica</span>
+          <span data-en>Technical pipeline</span>
+        </h3>
+        <p>
+          <span data-it>12 nodi in un grafo sequenziale: dal caricamento dei profili esperti alla generazione del documento di scenario. Ogni nodo esegue un passo della deliberazione — analisi delle affermazioni, rilevamento di conflitti, sintesi delle posizioni. Powered by Claude.</span>
+          <span data-en>12 nodes in a sequential graph pipeline: from loading expert profiles to generating the scenario document. Each node executes one deliberation step — claim analysis, conflict detection, position synthesis. Powered by Claude.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SHARED DNA ═══════════════ -->
+  <section class="content-sec">
+    <div class="sec-inner">
+      <div class="fu">
+        <div class="sec-label">
+          <span data-it>DNA condiviso</span>
+          <span data-en>Shared DNA</span>
+        </div>
+        <h2 class="sec-h2">
+          <span data-it>Un engine, <span class="v">molte applicazioni.</span></span>
+          <span data-en>One engine, <span class="v">many applications.</span></span>
+        </h2>
+      </div>
+
+      <div class="compare-grid fu">
+        <div class="compare-col col-violet">
+          <h3 style="color:var(--violet)">Ravenmoor</h3>
+          <ul>
+            <li>
+              <span data-it>Narrativa interattiva</span>
+              <span data-en>Interactive narrative</span>
+            </li>
+            <li>
+              <span data-it>8 NPC autonomi</span>
+              <span data-en>8 autonomous NPCs</span>
+            </li>
+            <li>
+              <span data-it>Ambientazione thriller gotico</span>
+              <span data-en>Gothic thriller setting</span>
+            </li>
+            <li>
+              <span data-it>Output: Live Book</span>
+              <span data-en>Output: Live Book</span>
+            </li>
+            <li>
+              <span data-it>Intrattenimento consumer</span>
+              <span data-en>Consumer entertainment</span>
+            </li>
+          </ul>
+        </div>
+        <div class="compare-col col-teal">
+          <h3 style="color:var(--teal)">BrainStorm</h3>
+          <ul>
+            <li>
+              <span data-it>Deliberazione strategica</span>
+              <span data-en>Strategic deliberation</span>
+            </li>
+            <li>
+              <span data-it>N agenti esperti</span>
+              <span data-en>N expert agents</span>
+            </li>
+            <li>
+              <span data-it>Qualsiasi scenario / dominio</span>
+              <span data-en>Any scenario / domain</span>
+            </li>
+            <li>
+              <span data-it>Output: documenti di scenario</span>
+              <span data-en>Output: scenario documents</span>
+            </li>
+            <li>
+              <span data-it>Applicazioni enterprise</span>
+              <span data-en>Enterprise applications</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA BANNER ═══════════════ -->
+  <section class="cta-banner">
+    <h2>
+      <span data-it>Hai uno scenario da esplorare?</span>
+      <span data-en>Have a scenario to explore?</span>
+    </h2>
+    <p>
+      <span data-it>La stessa architettura che alimenta il mistero di Ravenmoor può simulare le tue sfide strategiche.</span>
+      <span data-en>The same architecture that powers Ravenmoor's mystery can simulate your strategic challenges.</span>
+    </p>
+    <a href="chi-siamo.html#contatti" class="btn-primary" style="background:var(--violet)">
+      <span data-it>Parliamone</span>
+      <span data-en>Let's talk</span>
+    </a>
+  </section>
+
+  <div id="footer-slot"></div>
+  <script src="js/global.js"></script>
+  <script src="js/canvas.js"></script>
+</body>
+</html>

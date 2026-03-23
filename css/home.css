@@ -1,0 +1,213 @@
+/* ══════════════════════════════════════════════════
+   ZETAKAPPA FUTURES — Home Page Styles
+   ══════════════════════════════════════════════════ */
+
+/* ── HERO ── */
+#hero {
+  position:relative; z-index:1;
+  min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:140px 56px 100px;
+  max-width:1360px; margin:0 auto;
+}
+.hero-label {
+  font-family:var(--M); font-size:.67rem; letter-spacing:.18em;
+  color:var(--teal); text-transform:uppercase;
+  margin-bottom:36px; display:flex; align-items:center; gap:12px;
+}
+.hero-label::before { content:''; width:30px; height:1px; background:var(--teal) }
+.hero-h1 {
+  font-family:var(--D); font-weight:800;
+  font-size:clamp(3.4rem,8vw,7.4rem);
+  line-height:.92; letter-spacing:-.035em;
+  margin-bottom:0;
+}
+.hero-h1 .serif { font-family:var(--I); font-style:italic; font-weight:400; letter-spacing:-.01em }
+.hero-h1 .hl  { color:var(--teal) }
+.hero-h1 .hl2 { color:var(--violet) }
+.hero-sub {
+  font-family:var(--M); font-size:clamp(.8rem,1.1vw,.95rem);
+  font-weight:300; letter-spacing:.04em;
+  color:var(--dim);
+  max-width:70ch; line-height:1.75;
+  margin-top:40px; margin-bottom:52px;
+  padding-top:32px;
+  border-top:1px solid var(--border);
+}
+.hero-sub strong { font-weight:500; color:var(--white); letter-spacing:.01em }
+.hero-cta { display:flex; gap:14px; flex-wrap:wrap; align-items:center }
+.scroll-hint {
+  position:absolute; bottom:48px; left:56px;
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--M); font-size:.6rem; letter-spacing:.12em;
+  color:var(--dim2); text-transform:uppercase;
+}
+.scroll-bar {
+  width:1px; height:44px;
+  background:linear-gradient(to bottom,var(--teal),transparent);
+  animation:sb 2.6s ease-in-out infinite;
+}
+@keyframes sb { 0%,100%{opacity:.25} 50%{opacity:.85} }
+
+/* ── TICKER ── */
+.ticker-wrap {
+  position:relative; z-index:1;
+  background:var(--deep);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  overflow:hidden; padding:16px 0;
+}
+.ticker-track { display:flex; width:max-content; animation:tk 32s linear infinite }
+.ticker-item {
+  font-family:var(--M); font-size:.65rem; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--dim2);
+  padding:0 40px; white-space:nowrap;
+  display:flex; align-items:center; gap:16px;
+}
+.ticker-dot { width:3px; height:3px; border-radius:50%; background:var(--teal); opacity:.6 }
+@keyframes tk { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── PILLARS ── */
+#attivita { background:var(--deep); border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.pillars-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:16px; overflow:hidden;
+  margin-top:60px;
+}
+.pillar-card {
+  background:var(--card); padding:44px 36px;
+  display:flex; flex-direction:column;
+  transition:background .28s;
+  position:relative; overflow:hidden;
+}
+.pillar-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  transform:scaleX(0); transform-origin:left; transition:transform .35s;
+}
+.pillar-card.p1::after { background:var(--teal) }
+.pillar-card.p2::after { background:var(--violet) }
+.pillar-card.p3::after { background:var(--coral) }
+.pillar-card:hover { background:var(--card-h) }
+.pillar-card:hover::after { transform:scaleX(1) }
+.pillar-num {
+  font-family:var(--M); font-size:.62rem; letter-spacing:.12em;
+  color:var(--dim2); margin-bottom:28px;
+}
+.pillar-icon {
+  font-size:1.4rem; margin-bottom:18px; width:46px; height:46px;
+  border-radius:10px; display:flex; align-items:center; justify-content:center;
+}
+.pi-t { background:rgba(0,221,180,.1) }
+.pi-v { background:rgba(139,130,255,.1) }
+.pi-c { background:rgba(255,110,110,.1) }
+.pillar-title {
+  font-family:var(--D); font-weight:700; font-size:1.15rem;
+  letter-spacing:-.015em; margin-bottom:10px;
+}
+.pillar-tag {
+  font-family:var(--M); font-size:.58rem; letter-spacing:.1em;
+  text-transform:uppercase; padding:3px 8px; border-radius:4px;
+  margin-bottom:14px; width:fit-content;
+}
+.pt-t { background:rgba(0,221,180,.1);   color:var(--teal) }
+.pt-v { background:rgba(139,130,255,.12); color:#b0acff }
+.pt-c { background:rgba(255,110,110,.1);  color:#ff9494 }
+.pillar-desc {
+  font-family:var(--I); font-size:.95rem; color:var(--dim);
+  line-height:1.68; flex-grow:1; margin-bottom:28px;
+}
+.pillar-link {
+  font-family:var(--M); font-size:.68rem; letter-spacing:.07em;
+  color:var(--dim); display:flex; align-items:center; gap:8px;
+  transition:color .2s, gap .2s;
+}
+.pillar-card.p1:hover .pillar-link { color:var(--teal); gap:12px }
+.pillar-card.p2:hover .pillar-link { color:#b0acff;     gap:12px }
+.pillar-card.p3:hover .pillar-link { color:#ff9494;     gap:12px }
+
+/* ── RAVENMOOR ── */
+#ravenmoor-sec { border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.rv-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:72px; align-items:center }
+.rv-right { display:flex; flex-direction:column; gap:16px }
+.rv-stat {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:10px; padding:22px 26px; transition:border-color .25s;
+}
+.rv-stat:hover { border-color:rgba(139,130,255,.3) }
+.rv-stat-n {
+  font-family:var(--D); font-weight:800; font-size:1.65rem;
+  color:#b0acff; display:block; line-height:1; margin-bottom:5px;
+}
+.rv-stat-l {
+  font-family:var(--M); font-size:.6rem; letter-spacing:.1em;
+  color:var(--dim); text-transform:uppercase; display:block;
+}
+.rv-tag {
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--M); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+  color:#b0acff; background:rgba(139,130,255,.1);
+  border:1px solid rgba(139,130,255,.2);
+  padding:5px 12px; border-radius:20px; margin-bottom:22px; width:fit-content;
+}
+.rv-tag::before { content:'◆'; font-size:.5rem }
+.rv-title {
+  font-family:var(--D); font-weight:800;
+  font-size:clamp(2rem,3.5vw,3.2rem);
+  letter-spacing:-.03em; line-height:1.05; margin-bottom:20px;
+}
+.rv-desc {
+  font-family:var(--I); font-size:1.05rem; color:var(--dim);
+  line-height:1.75; margin-bottom:36px;
+}
+.rv-engine {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--M); font-size:.62rem; letter-spacing:.07em;
+  color:var(--dim2); margin-bottom:32px;
+}
+.rv-engine span { font-size:.68rem; letter-spacing:.08em; color:var(--violet) }
+.rv-cover {
+  width:100%; border-radius:14px; border:1px solid var(--border);
+  margin-bottom:24px;
+}
+
+/* ── MANIFESTO ── */
+#manifesto { background:var(--deep); border-top:1px solid var(--border); border-bottom:1px solid var(--border) }
+.man-quote {
+  font-family:var(--I); font-style:italic;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  line-height:1.5; color:var(--white);
+  max-width:24ch; margin:0 auto; text-align:center;
+  margin-bottom:72px;
+}
+.man-quote strong { font-style:normal; font-weight:400; color:var(--teal) }
+.man-3 {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:14px; overflow:hidden;
+}
+.man-cell { background:var(--card); padding:38px 34px; transition:background .25s }
+.man-cell:hover { background:var(--card-h) }
+.man-num {
+  font-family:var(--M); font-size:.6rem; letter-spacing:.12em;
+  color:var(--teal); margin-bottom:14px; display:block;
+}
+.man-title {
+  font-family:var(--D); font-weight:600; font-size:.98rem;
+  margin-bottom:10px; letter-spacing:-.01em;
+}
+.man-desc { font-family:var(--I); font-size:.9rem; color:var(--dim); line-height:1.65 }
+.man-link {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--M); font-size:.67rem; letter-spacing:.07em;
+  color:var(--dim); margin-top:20px; transition:color .2s;
+}
+.man-link:hover { color:var(--white) }
+
+/* ── HOME RESPONSIVE ── */
+@media(max-width:960px) {
+  #hero { padding:110px 24px 80px }
+  .scroll-hint { left:24px }
+  .pillars-grid { grid-template-columns:1fr }
+  .rv-grid { grid-template-columns:1fr; gap:44px }
+  .man-3 { grid-template-columns:1fr }
+}

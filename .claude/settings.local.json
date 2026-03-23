@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:fantaforecasting.it)",
+      "Bash(grep -E \"\\\\.\\(md|txt|json|pdf\\)$\")"
+    ]
+  }
+}

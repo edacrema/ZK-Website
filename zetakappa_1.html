@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZetaKappa Futures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #06060a;
+  --deep:    #0a0a10;
+  --surface: #0e0e17;
+  --card:    #111119;
+  --card-h:  #16162200;
+  --border:  rgba(255,255,255,.07);
+  --border2: rgba(255,255,255,.04);
+  --teal:    #00ddb4;
+  --violet:  #8b82ff;
+  --coral:   #ff6e6e;
+  --gold:    #f0c040;
+  --white:   #eeeef5;
+  --dim:     rgba(238,238,245,.44);
+  --dim2:    rgba(238,238,245,.22);
+  --D: 'Syne', sans-serif;
+  --M: 'DM Mono', monospace;
+  --I: 'Instrument Serif', serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--I);font-weight:400;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ── CANVAS ── */
+#cvs{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 56px;
+  border-bottom:1px solid transparent;
+  transition:background .45s,border-color .45s;
+}
+nav.sc{
+  background:rgba(6,6,10,.9);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-color:var(--border);
+}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-mark{
+  width:30px;height:30px;border:1.5px solid var(--teal);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--M);font-size:.68rem;color:var(--teal);letter-spacing:-.06em;flex-shrink:0;
+}
+.logo-name{font-family:var(--D);font-weight:700;font-size:1.05rem;letter-spacing:.01em}
+.logo-name em{font-style:normal;color:var(--teal)}
+.nav-r{display:flex;align-items:center;gap:36px}
+.nav-a{font-family:var(--M);font-size:.68rem;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;transition:color .2s}
+.nav-a:hover{color:var(--white)}
+.lswitch{display:flex;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;overflow:hidden;padding:2px;gap:2px}
+.lbtn{font-family:var(--M);font-size:.63rem;font-weight:500;letter-spacing:.08em;padding:5px 10px;border:none;background:transparent;color:var(--dim);cursor:pointer;border-radius:4px;transition:all .2s}
+.lbtn.on{background:var(--teal);color:var(--black)}
+
+/* ── HERO ── */
+#hero{
+  position:relative;z-index:1;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:140px 56px 100px;
+  max-width:1360px;margin:0 auto;
+}
+.hero-label{
+  font-family:var(--M);font-size:.67rem;letter-spacing:.18em;
+  color:var(--teal);text-transform:uppercase;
+  margin-bottom:36px;display:flex;align-items:center;gap:12px;
+}
+.hero-label::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* The main headline — short, bold, mixed type */
+.hero-h1{
+  font-family:var(--D);font-weight:800;
+  font-size:clamp(3.4rem,8vw,7.4rem);
+  line-height:.92;letter-spacing:-.035em;
+  margin-bottom:0;
+}
+.hero-h1 .serif{font-family:var(--I);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.hero-h1 .hl{color:var(--teal)}
+.hero-h1 .hl2{color:var(--violet)}
+
+/* The subtitle — the longer descriptor */
+.hero-sub{
+  font-family:var(--M);font-size:clamp(.8rem,1.1vw,.95rem);
+  font-weight:300;letter-spacing:.04em;
+  color:var(--dim);
+  max-width:70ch;line-height:1.75;
+  margin-top:40px;margin-bottom:52px;
+  padding-top:32px;
+  border-top:1px solid var(--border);
+}
+.hero-sub strong{font-weight:500;color:var(--white);letter-spacing:.01em}
+
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  font-family:var(--M);font-size:.73rem;letter-spacing:.05em;font-weight:500;
+  padding:13px 26px;background:var(--teal);color:var(--black);
+  border:none;border-radius:6px;cursor:pointer;display:inline-block;
+  transition:opacity .2s,transform .2s;
+}
+.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
+.btn-ghost{
+  font-family:var(--M);font-size:.73rem;letter-spacing:.05em;font-weight:400;
+  padding:13px 26px;background:transparent;color:var(--dim);
+  border:1px solid var(--border);border-radius:6px;cursor:pointer;display:inline-block;
+  transition:all .2s;
+}
+.btn-ghost:hover{color:var(--white);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}
+
+.scroll-hint{
+  position:absolute;bottom:48px;left:56px;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--M);font-size:.6rem;letter-spacing:.12em;color:var(--dim2);text-transform:uppercase;
+}
+.scroll-bar{width:1px;height:44px;background:linear-gradient(to bottom,var(--teal),transparent);animation:sb 2.6s ease-in-out infinite}
+@keyframes sb{0%,100%{opacity:.25}50%{opacity:.85}}
+
+/* ── TICKER ── */
+.ticker-wrap{position:relative;z-index:1;background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;padding:16px 0}
+.ticker-track{display:flex;width:max-content;animation:tk 32s linear infinite}
+.ticker-item{font-family:var(--M);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;color:var(--dim2);padding:0 40px;white-space:nowrap;display:flex;align-items:center;gap:16px}
+.ticker-dot{width:3px;height:3px;border-radius:50%;background:var(--teal);opacity:.6}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION SCAFFOLDING ── */
+section{position:relative;z-index:1}
+.sec-inner{max-width:1360px;margin:0 auto;padding:108px 56px}
+.sec-label{
+  font-family:var(--M);font-size:.65rem;letter-spacing:.14em;color:var(--dim);
+  text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.sec-label::before{content:'';width:14px;height:1px;background:currentColor}
+.sec-h2{
+  font-family:var(--D);font-weight:700;
+  font-size:clamp(1.9rem,3.2vw,2.8rem);
+  letter-spacing:-.025em;line-height:1.08;margin-bottom:20px;
+}
+.sec-h2 .t{color:var(--teal)}
+
+/* ── PILLARS — core activities ── */
+#attivita{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pillars-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  margin-top:60px;
+}
+.pillar-card{
+  background:var(--card);padding:44px 36px;
+  display:flex;flex-direction:column;
+  transition:background .28s;
+  position:relative;overflow:hidden;
+}
+.pillar-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  transform:scaleX(0);transform-origin:left;transition:transform .35s;
+}
+.pillar-card.p1::after{background:var(--teal)}
+.pillar-card.p2::after{background:var(--violet)}
+.pillar-card.p3::after{background:var(--coral)}
+.pillar-card:hover{background:#131320}
+.pillar-card:hover::after{transform:scaleX(1)}
+.pillar-num{font-family:var(--M);font-size:.62rem;letter-spacing:.12em;color:var(--dim2);margin-bottom:28px}
+.pillar-icon{font-size:1.4rem;margin-bottom:18px;width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.pi-t{background:rgba(0,221,180,.1)}
+.pi-v{background:rgba(139,130,255,.1)}
+.pi-c{background:rgba(255,110,110,.1)}
+.pillar-title{font-family:var(--D);font-weight:700;font-size:1.15rem;letter-spacing:-.015em;margin-bottom:10px}
+.pillar-tag{font-family:var(--M);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-bottom:14px;width:fit-content}
+.pt-t{background:rgba(0,221,180,.1);color:var(--teal)}
+.pt-v{background:rgba(139,130,255,.12);color:#b0acff}
+.pt-c{background:rgba(255,110,110,.1);color:#ff9494}
+.pillar-desc{font-family:var(--I);font-size:.95rem;color:var(--dim);line-height:1.68;flex-grow:1;margin-bottom:28px}
+.pillar-link{font-family:var(--M);font-size:.68rem;letter-spacing:.07em;color:var(--dim);display:flex;align-items:center;gap:8px;transition:color .2s,gap .2s}
+.pillar-card.p1:hover .pillar-link{color:var(--teal);gap:12px}
+.pillar-card.p2:hover .pillar-link{color:#b0acff;gap:12px}
+.pillar-card.p3:hover .pillar-link{color:#ff9494;gap:12px}
+
+/* ── RAVENMOOR ── */
+#ravenmoor-sec{border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.rv-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.rv-right{display:flex;flex-direction:column;gap:16px}
+.rv-stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 26px;transition:border-color .25s}
+.rv-stat:hover{border-color:rgba(139,130,255,.3)}
+.rv-stat-n{font-family:var(--D);font-weight:800;font-size:1.65rem;color:#b0acff;display:block;line-height:1;margin-bottom:5px}
+.rv-stat-l{font-family:var(--M);font-size:.6rem;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;display:block}
+.rv-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--M);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#b0acff;background:rgba(139,130,255,.1);
+  border:1px solid rgba(139,130,255,.2);
+  padding:5px 12px;border-radius:20px;margin-bottom:22px;width:fit-content;
+}
+.rv-tag::before{content:'◆';font-size:.5rem}
+.rv-title{font-family:var(--D);font-weight:800;font-size:clamp(2rem,3.5vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:20px}
+.rv-desc{font-family:var(--I);font-size:1.05rem;color:var(--dim);line-height:1.75;margin-bottom:36px}
+.rv-engine{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--M);font-size:.62rem;letter-spacing:.07em;
+  color:var(--dim2);margin-bottom:32px;
+}
+.rv-engine span{font-size:.68rem;letter-spacing:.08em;color:var(--violet)}
+
+/* ── MANIFESTO ── */
+#manifesto{background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.man-quote{
+  font-family:var(--I);font-style:italic;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  line-height:1.5;color:var(--white);
+  max-width:24ch;margin:0 auto;text-align:center;
+  margin-bottom:72px;
+}
+.man-quote strong{font-style:normal;font-weight:400;color:var(--teal)}
+.man-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.man-cell{background:var(--card);padding:38px 34px;transition:background .25s}
+.man-cell:hover{background:#131320}
+.man-num{font-family:var(--M);font-size:.6rem;letter-spacing:.12em;color:var(--teal);margin-bottom:14px;display:block}
+.man-title{font-family:var(--D);font-weight:600;font-size:.98rem;margin-bottom:10px;letter-spacing:-.01em}
+.man-desc{font-family:var(--I);font-size:.9rem;color:var(--dim);line-height:1.65}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:1;max-width:1360px;margin:0 auto;padding:44px 56px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid var(--border)}
+.f-copy{font-family:var(--M);font-size:.62rem;letter-spacing:.07em;color:var(--dim2)}
+.f-links{display:flex;gap:28px;flex-wrap:wrap}
+.f-links a{font-family:var(--M);font-size:.62rem;letter-spacing:.07em;color:var(--dim);transition:color .2s}
+.f-links a:hover{color:var(--white)}
+
+/* ── ANIMATIONS ── */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.fu.v{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  nav{padding:18px 24px}
+  .nav-a{display:none}
+  #hero{padding:110px 24px 80px}
+  .scroll-hint{left:24px}
+  .sec-inner{padding:72px 24px}
+  .pillars-grid{grid-template-columns:1fr}
+  .rv-grid{grid-template-columns:1fr;gap:44px}
+  .man-3{grid-template-columns:1fr}
+  footer{padding:32px 24px}
+}
+
+/* ── LANG ── */
+[data-it]{display:block}[data-en]{display:none}
+body.en [data-it]{display:none}body.en [data-en]{display:block}
+span[data-it],span[data-en]{display:inline}
+body.en span[data-it]{display:none}body.en span[data-en]{display:inline}
+</style>
+</head>
+<body>
+
+<canvas id="cvs"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <div class="logo-mark">ZK</div>
+    <span class="logo-name">Zeta<em>Kappa</em></span>
+  </a>
+  <div class="nav-r">
+    <a href="#attivita" class="nav-a" data-it>Attività</a>
+    <a href="#attivita" class="nav-a" data-en>Work</a>
+    <a href="#ravenmoor-sec" class="nav-a">Ravenmoor</a>
+    <div class="lswitch">
+      <button class="lbtn on" id="bit" onclick="setLang('it')">IT</button>
+      <button class="lbtn" id="ben" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-label">
+    <span data-it>Studio tecnologico · Milano</span>
+    <span data-en>Technology studio · Milan</span>
+  </div>
+
+  <!-- SLOGAN 1: short, punchy headline -->
+  <h1 class="hero-h1">
+    <span data-it>
+      Modelliamo come le <span class="serif">menti</span> —<br>
+      <span class="hl">umane</span> e <span class="hl2">artificiali</span> —<br>
+      pensano <span class="serif">insieme.</span>
+    </span>
+    <span data-en>
+      We model how <span class="serif">minds</span> —<br>
+      <span class="hl">human</span> and <span class="hl2">artificial</span> —<br>
+      think <span class="serif">together.</span>
+    </span>
+  </h1>
+
+  <!-- SLOGAN 2: the longer descriptor, separated by a thin rule -->
+  <p class="hero-sub">
+    <span data-it>
+      <strong>Infrastruttura per l'intelligenza collettiva:</strong>
+      aggregiamo previsioni umane, simuliamo comportamenti emergenti di agenti AI,
+      e costruiamo modelli che replicano come popolazioni reali formano credenze e prendono decisioni.
+    </span>
+    <span data-en>
+      <strong>Collective intelligence infrastructure:</strong>
+      aggregating human forecasts, simulating emergent behavior of AI agents,
+      and building models that replicate how real populations form beliefs and make decisions.
+    </span>
+  </p>
+
+  <div class="hero-cta">
+    <a href="#attivita" class="btn-primary">
+      <span data-it>Scopri le nostre attività</span>
+      <span data-en>Explore our work</span>
+    </a>
+    <a href="/cdn-cgi/l/email-protection#660f080009261c0312070d07161607480f12" class="btn-ghost">
+      <span data-it>Scrivici</span>
+      <span data-en>Get in touch</span>
+    </a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-bar"></div>
+    <span data-it>scorri</span><span data-en>scroll</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Wisdom of the Crowd</span><span data-en>Wisdom of the Crowd</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Simulazione Multi-Agente</span><span data-en>Multi-Agent Simulation</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Forecasting Collettivo</span><span data-en>Collective Forecasting</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span>Triple Truth System</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Modelli Survey Sintetici</span><span data-en>Synthetic Survey Models</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Comportamento Emergente</span><span data-en>Emergent Behavior</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span>Complexity Science</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>AI Training Infrastructure</span><span data-en>AI Training Infrastructure</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Narrazione Procedurale</span><span data-en>Procedural Narrative</span></span>
+    <!-- duplicate -->
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Wisdom of the Crowd</span><span data-en>Wisdom of the Crowd</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Simulazione Multi-Agente</span><span data-en>Multi-Agent Simulation</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Forecasting Collettivo</span><span data-en>Collective Forecasting</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span>Triple Truth System</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Modelli Survey Sintetici</span><span data-en>Synthetic Survey Models</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Comportamento Emergente</span><span data-en>Emergent Behavior</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span>Complexity Science</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>AI Training Infrastructure</span><span data-en>AI Training Infrastructure</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Narrazione Procedurale</span><span data-en>Procedural Narrative</span></span>
+  </div>
+</div>
+
+<!-- CORE ACTIVITIES -->
+<section id="attivita">
+  <div class="sec-inner">
+    <div class="fu">
+      <div class="sec-label" data-it>Le nostre attività</div>
+      <div class="sec-label" data-en>Our work</div>
+      <h2 class="sec-h2">
+        <span data-it>Tre fronti, <span class="t">un filo comune.</span></span>
+        <span data-en>Three fronts, <span class="t">one thread.</span></span>
+      </h2>
+    </div>
+
+    <div class="pillars-grid">
+
+      <!-- FANTAFORECASTING -->
+      <a href="https://fantaforecasting.it/" target="_blank" class="pillar-card p1 fu">
+        <span class="pillar-num">01</span>
+        <div class="pillar-icon pi-t">🎯</div>
+        <span class="pillar-tag pt-t" data-it>Piattaforma · Previsione collettiva</span>
+        <span class="pillar-tag pt-t" data-en>Platform · Collective forecasting</span>
+        <h3 class="pillar-title">Fantaforecasting</h3>
+        <p class="pillar-desc">
+          <span data-it>Tornei di previsione su eventi reali — politica, economia, sport. Ogni partecipante esprime la probabilità che un evento si verifichi; l'aggregazione di tutte le stime produce la <em>wisdom of the crowd</em>, uno dei metodi predittivi più accurati noti alla scienza.</span>
+          <span data-en>Forecasting tournaments on real events — politics, economics, sports. Each participant assigns a probability to an outcome; aggregating all estimates produces the <em>wisdom of the crowd</em>, one of the most accurate predictive methods known to science.</span>
+        </p>
+        <span class="pillar-link">
+          <span data-it>Vai alla piattaforma</span>
+          <span data-en>Go to platform</span> →
+        </span>
+      </a>
+
+      <!-- EMERGENT.engine -->
+      <a href="#ravenmoor-sec" class="pillar-card p2 fu" style="transition-delay:.1s">
+        <span class="pillar-num">02</span>
+        <div class="pillar-icon pi-v">⚙️</div>
+        <span class="pillar-tag pt-v">EMERGENT.engine</span>
+        <h3 class="pillar-title">
+          <span data-it>Simulazione AI multi-agente</span>
+          <span data-en>AI multi-agent simulation</span>
+        </h3>
+        <p class="pillar-desc">
+          <span data-it>Agenti AI con obiettivi, credenze e informazioni asimmetriche. Il comportamento collettivo non è programmato: <em>emerge</em>. Applicazioni in intrattenimento, training di modelli AI e simulazione di scenari complessi per organizzazioni.</span>
+          <span data-en>AI agents with goals, beliefs, and asymmetric information. Collective behavior is not scripted: it <em>emerges</em>. Applications in entertainment, AI model training, and complex scenario simulation for organizations.</span>
+        </p>
+        <span class="pillar-link">
+          <span data-it>Vedi Ravenmoor, il PoC</span>
+          <span data-en>See Ravenmoor, the PoC</span> →
+        </span>
+      </a>
+
+      <!-- ZK FORGE -->
+      <div class="pillar-card p3 fu" style="transition-delay:.2s;cursor:default">
+        <span class="pillar-num">03</span>
+        <div class="pillar-icon pi-c">🔬</div>
+        <span class="pillar-tag pt-c" data-it>Laboratorio · Pre &amp; Post Training</span>
+        <span class="pillar-tag pt-c" data-en>Lab · Pre &amp; Post Training</span>
+        <h3 class="pillar-title"><span data-it>La Forgia</span><span data-en>The Forge</span></h3>
+        <p class="pillar-desc">
+          <span data-it>Il laboratorio interno di ricerca su LLM. Sperimentiamo tecniche di pre-training, SFT, RLHF e preference optimization per costruire modelli specializzati. Progetto attivo: <em>COMARE</em> — un LLM italiano fine-tunato per simulare come specifici profili demografici della popolazione risponderebbero a survey sociopolitiche.</span>
+          <span data-en>Our internal LLM research lab. We experiment with pre-training, SFT, RLHF, and preference optimization to build specialized models. Active project: <em>COMARE</em> — an Italian LLM fine-tuned to simulate how specific demographic profiles of the population would respond to sociopolitical surveys.</span>
+        </p>
+        <span class="pillar-link" style="cursor:default;pointer-events:none">
+          <span data-it>Ricerca in corso</span>
+          <span data-en>Research in progress</span>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RAVENMOOR -->
+<section id="ravenmoor-sec">
+  <div class="sec-inner">
+    <div class="rv-grid">
+      <div class="fu">
+        <span class="rv-tag">
+          <span data-it>Primo Live Book al mondo · Proof of Concept</span>
+          <span data-en>World's First Live Book · Proof of Concept</span>
+        </span>
+        <h2 class="rv-title">I Misteri<br>di Ravenmoor</h2>
+        <p class="rv-desc">
+          <span data-it>Un thriller gotico ambientato in una villa inglese nel 1987. Otto personaggi AI autonomi con segreti, agende e relazioni proprie. Il mondo vive anche dove il giocatore non guarda: NPC si muovono, tramano, si accusano. Al termine della partita, l'engine genera un romanzo completo — tutto ciò che hai visto, e tutto ciò che ti sei perso.</span>
+          <span data-en>A gothic thriller set in an English manor in 1987. Eight autonomous AI characters with their own secrets, agendas, and relationships. The world lives even where the player isn't looking: NPCs move, conspire, accuse each other. At the end, the engine generates a complete novel — everything you witnessed, and everything you missed.</span>
+        </p>
+        <div class="rv-engine">
+          <span data-it>Costruito su</span>
+          <span data-en>Built on</span>
+          <span>EMERGENT.engine</span>
+        </div>
+        <a href="#ravenmoor" class="btn-primary">
+          <span data-it>Entra nel gioco</span>
+          <span data-en>Enter the game</span>
+        </a>
+      </div>
+      <div class="rv-right fu" style="transition-delay:.15s">
+        <div class="rv-stat">
+          <span class="rv-stat-n">8</span>
+          <span class="rv-stat-l" data-it>NPC autonomi con memoria e agende</span>
+          <span class="rv-stat-l" data-en>Autonomous NPCs with memory and agendas</span>
+        </div>
+        <div class="rv-stat">
+          <span class="rv-stat-n">3</span>
+          <span class="rv-stat-l" data-it>Lingue disponibili: italiano, inglese, tedesco</span>
+          <span class="rv-stat-l" data-en>Available languages: Italian, English, German</span>
+        </div>
+        <div class="rv-stat">
+          <span class="rv-stat-n">∞</span>
+          <span class="rv-stat-l" data-it>Partite non identiche — comportamento emergente</span>
+          <span class="rv-stat-l" data-en>No two playthroughs alike — emergent behavior</span>
+        </div>
+        <div class="rv-stat">
+          <span class="rv-stat-n" style="font-size:.82rem;font-family:var(--M);letter-spacing:.04em;color:#b0acff">LIVE BOOK</span>
+          <span class="rv-stat-l" data-it>Nuovo formato narrativo: il gioco genera un romanzo</span>
+          <span class="rv-stat-l" data-en>New narrative format: the game generates a novel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="sec-inner">
+    <blockquote class="man-quote fu">
+      <span data-it>«Ognuno di noi possiede uno sguardo unico e prezioso sul futuro. <strong>Aggregare questi sguardi è il mezzo più potente per capire il mondo che verrà.</strong>»</span>
+      <span data-en>«Each of us holds a unique and valuable perspective on the future. <strong>Aggregating these perspectives is the most powerful tool we have for understanding the world to come.</strong>»</span>
+    </blockquote>
+
+    <div class="man-3">
+      <div class="man-cell fu">
+        <span class="man-num">MEGATREND</span>
+        <div class="man-title" data-it>Newsletter · Substack</div>
+        <div class="man-title" data-en>Newsletter · Substack</div>
+        <p class="man-desc">
+          <span data-it>Analisi delle grandi trasformazioni sistemiche che ridefiniscono geopolitica, AI ed economia globale. Sfida le narrative dominanti.</span>
+          <span data-en>Analysis of the major systemic transformations reshaping geopolitics, AI, and the global economy. Challenges dominant narratives.</span>
+        </p>
+        <a href="https://zetakappa.substack.com/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--M);font-size:.67rem;letter-spacing:.07em;color:var(--dim);margin-top:20px;transition:color .2s" onmouseover="this.style.color='#eeeef5'" onmouseout="this.style.color=''">
+          <span data-it>Leggi su Substack</span>
+          <span data-en>Read on Substack</span> →
+        </a>
+      </div>
+      <div class="man-cell fu" style="transition-delay:.1s">
+        <span class="man-num" style="color:var(--violet)">EMERGENT.engine</span>
+        <div class="man-title" data-it>Enterprise · AI Training</div>
+        <div class="man-title" data-en>Enterprise · AI Training</div>
+        <p class="man-desc">
+          <span data-it>La stessa architettura di Ravenmoor applicata a negoziazioni, scenari di crisi, training di modelli AI specializzati per ambienti multi-stakeholder.</span>
+          <span data-en>The same architecture behind Ravenmoor applied to negotiations, crisis scenarios, and training specialized AI models for multi-stakeholder environments.</span>
+        </p>
+        <a href="/cdn-cgi/l/email-protection#c8a1a6aea788b2adbca9a3a9b8b8a9e6a1bc" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--M);font-size:.67rem;letter-spacing:.07em;color:var(--dim);margin-top:20px;transition:color .2s" onmouseover="this.style.color='#eeeef5'" onmouseout="this.style.color=''">
+          <span data-it>Esplora le applicazioni</span>
+          <span data-en>Explore applications</span> →
+        </a>
+      </div>
+      <div class="man-cell fu" style="transition-delay:.2s">
+        <span class="man-num" style="color:var(--coral)"><span data-it>LA FORGIA</span><span data-en>THE FORGE</span></span>
+        <div class="man-title" data-it>Laboratorio LLM</div>
+        <div class="man-title" data-en>LLM Lab</div>
+        <p class="man-desc">
+          <span data-it>Esperimenti di pre-training, SFT e preference optimization. Costruiamo modelli specializzati per applicazioni che i foundation model generici non sanno fare — a partire da COMARE, il simulatore di survey della popolazione italiana.</span>
+          <span data-en>Experiments in pre-training, SFT, and preference optimization. We build specialized models for applications that generic foundation models can't handle — starting with COMARE, the Italian population survey simulator.</span>
+        </p>
+        <a href="/cdn-cgi/l/email-protection#fb92959d94bb819e8f9a909a8b8b9ad5928f" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--M);font-size:.67rem;letter-spacing:.07em;color:var(--dim);margin-top:20px;transition:color .2s" onmouseover="this.style.color='#eeeef5'" onmouseout="this.style.color=''">
+          <span data-it>Collabora con noi</span>
+          <span data-en>Collaborate with us</span> →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="f-copy">© 2026 ZetaKappa Futures Srl SB</p>
+  <div class="f-links">
+    <a href="https://www.zetakappa.it/privacy-policy/" target="_blank">Privacy</a>
+    <a href="https://www.linkedin.com/company/zetakappa-futures-srl-sb/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/zkfuture/" target="_blank">Instagram</a>
+    <a href="https://zetakappa.substack.com/" target="_blank">Substack</a>
+    <a href="/cdn-cgi/l/email-protection#c8a1a6aea788b2adbca9a3a9b8b8a9e6a1bc"><span data-it>Contatti</span><span data-en>Contact</span></a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── CANVAS ── */
+const cvs = document.getElementById('cvs');
+const ctx = cvs.getContext('2d');
+let W, H, pts = [];
+
+function resize() {
+  W = cvs.width = window.innerWidth;
+  H = cvs.height = window.innerHeight;
+  pts = Array.from({ length: Math.floor(W * H / 12000) }, () => ({
+    x: Math.random() * W, y: Math.random() * H,
+    r: Math.random() * .9 + .2,
+    vx: (Math.random() - .5) * .13, vy: (Math.random() - .5) * .13,
+    a: Math.random() * .38 + .06
+  }));
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  // grid
+  ctx.strokeStyle = 'rgba(0,221,180,.028)';
+  ctx.lineWidth = 1;
+  const g = 76;
+  for (let x = 0; x < W; x += g) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = 0; y < H; y += g) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  // connections + dots
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 115) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(0,221,180,${.048 * (1 - d / 115)})`;
+        ctx.lineWidth = .5;
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  pts.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,221,180,${p.a})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', resize);
+resize(); draw();
+
+/* ── NAV ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 40));
+
+/* ── OBSERVER ── */
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) e.target.classList.add('v');
+}), { threshold: .1 });
+document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+/* ── LANG ── */
+function 
