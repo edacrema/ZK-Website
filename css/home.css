@@ -94,7 +94,7 @@
   color:var(--dim2); margin-bottom:28px;
 }
 .pillar-icon {
-  font-size:1.4rem; margin-bottom:18px; width:46px; height:46px;
+  font-size:1.4rem; margin-bottom:18px; width:56px; height:56px;
   border-radius:10px; display:flex; align-items:center; justify-content:center;
 }
 .pi-t { background:rgba(0,184,148,.12) }

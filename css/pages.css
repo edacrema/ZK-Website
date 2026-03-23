@@ -51,7 +51,7 @@
 .feature-card:hover { background:var(--card-h) }
 .feature-icon {
   font-size:1.3rem; margin-bottom:16px;
-  width:44px; height:44px; border-radius:10px;
+  width:54px; height:54px; border-radius:10px;
   display:flex; align-items:center; justify-content:center;
 }
 .feature-card h3 {
@@ -293,7 +293,7 @@
   min-width:120px; flex-shrink:0;
 }
 .pipe-circle {
-  width:56px; height:56px; border-radius:50%;
+  width:64px; height:64px; border-radius:50%;
   border:1.5px solid var(--border);
   display:flex; align-items:center; justify-content:center;
   font-size:1.2rem; background:var(--card);
