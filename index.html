@@ -185,13 +185,29 @@
           <span data-en>Built on</span>
           <span>EMERGENT.engine</span>
         </div>
-        <a href="project-emergent.html#ravenmoor" class="btn-primary" style="background:var(--violet)">
-          <span data-it>Scopri Ravenmoor</span>
-          <span data-en>Discover Ravenmoor</span>
-        </a>
+        <div style="margin-bottom:20px;">
+          <span class="tag tag-violet">ALPHA TEST</span>
+        </div>
+        <p style="font-family:var(--I);font-size:.95rem;color:var(--dim);line-height:1.65;margin-bottom:24px;">
+          <span data-it>Attualmente in alpha test in italiano, inglese e tedesco. Scrivici per partecipare.</span>
+          <span data-en>Currently in alpha testing in Italian, English, and German. Write us to participate.</span>
+        </p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://ravenmoor-ui.onrender.com/" target="_blank" rel="noopener" class="btn-primary" style="background:var(--violet)">
+            <span data-it>Prova l'alpha</span>
+            <span data-en>Try the alpha</span>
+          </a>
+          <a href="project-emergent.html#ravenmoor" class="btn-ghost">
+            <span data-it>Scopri di più</span>
+            <span data-en>Learn more</span>
+          </a>
+        </div>
       </div>
       <div class="rv-right fu" style="transition-delay:.15s">
-        <img src="images/intestazione.jpg" alt="Ravenmoor — I Misteri di Ravenmoor" class="rv-cover" loading="lazy">
+        <!-- Live Book video -->
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;border:1px solid var(--border);margin-bottom:24px;">
+          <iframe id="home-livebook-video" src="https://www.youtube.com/embed/lusZVZ6OWrQ?enablejsapi=1&mute=1&rel=0" title="Live Book — Ravenmoor" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+        </div>
         <div class="rv-stat">
           <span class="rv-stat-n">8</span>
           <span class="rv-stat-l" data-it>NPC autonomi con memoria e agende</span>
@@ -273,5 +289,21 @@
 
 <script src="js/global.js"></script>
 <script src="js/canvas.js"></script>
+<script>
+(function(){
+  var iframe = document.getElementById('home-livebook-video');
+  if (!iframe) return;
+  var played = false;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting && !played) {
+        played = true;
+        iframe.src += '&autoplay=1';
+      }
+    });
+  }, {threshold: 0.4});
+  observer.observe(iframe);
+})();
+</script>
 </body>
 </html>

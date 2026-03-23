@@ -54,7 +54,7 @@
 
       <!-- Triple Truth SVG Diagram -->
       <div class="diagram-wrap fu" style="margin-bottom:48px;">
-        <svg viewBox="0 0 600 380" width="600" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 600 380" style="width:100%;max-width:600px;height:auto" xmlns="http://www.w3.org/2000/svg">
           <!-- Connection lines -->
           <line x1="300" y1="72" x2="130" y2="280" stroke="rgba(0,0,0,.1)" stroke-width="1.5" stroke-dasharray="6 4"/>
           <line x1="300" y1="72" x2="470" y2="280" stroke="rgba(0,0,0,.1)" stroke-width="1.5" stroke-dasharray="6 4"/>
@@ -153,11 +153,26 @@
             <span data-it>Un thriller gotico ambientato in una villa inglese nel 1987. Otto NPC autonomi con segreti, agende e relazioni proprie. Il mondo vive anche dove il giocatore non guarda: personaggi si muovono, tramano, si accusano a vicenda. Al termine della partita, l'engine genera un romanzo completo — tutto ciò che hai visto, e tutto ciò che ti sei perso.</span>
             <span data-en>A gothic thriller set in an English manor in 1987. Eight autonomous NPCs with their own secrets, agendas, and relationships. The world lives even where the player isn't looking: characters move, conspire, accuse each other. At the end, the engine generates a complete novel — everything you witnessed, and everything you missed.</span>
           </p>
-          <p style="font-family:var(--M);font-size:.7rem;letter-spacing:.06em;color:var(--dim2);margin-bottom:32px;">
+          <p style="font-family:var(--M);font-size:.7rem;letter-spacing:.06em;color:var(--dim2);margin-bottom:24px;">
             <span data-it>Costruito su</span>
             <span data-en>Built on</span>
             <span style="color:var(--violet)"> EMERGENT.engine</span>
           </p>
+          <span class="tag tag-violet" style="margin-bottom:20px;">ALPHA TEST</span>
+          <p style="font-family:var(--I);font-size:.95rem;color:var(--dim);line-height:1.65;margin-bottom:24px;">
+            <span data-it>Ravenmoor è attualmente in alpha test con versioni in italiano, inglese e tedesco. Chiunque sia interessato può scriverci per partecipare.</span>
+            <span data-en>Ravenmoor is currently in alpha testing with Italian, English, and German versions. Anyone interested can reach out to participate.</span>
+          </p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <a href="https://ravenmoor-ui.onrender.com/" target="_blank" rel="noopener" class="btn-primary" style="background:var(--violet)">
+              <span data-it>Prova l'alpha</span>
+              <span data-en>Try the alpha</span>
+            </a>
+            <a href="chi-siamo.html#contatti" class="btn-ghost">
+              <span data-it>Scrivici per partecipare</span>
+              <span data-en>Write us to participate</span>
+            </a>
+          </div>
         </div>
         <!-- Right: cover + stats -->
         <div>
@@ -192,6 +207,13 @@
               </span>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Live Book video -->
+      <div class="fu" style="margin-top:56px;">
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;border:1px solid var(--border);">
+          <iframe id="livebook-video" src="https://www.youtube.com/embed/lusZVZ6OWrQ?enablejsapi=1&mute=1&rel=0" title="Live Book — Ravenmoor" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
         </div>
       </div>
 
@@ -395,5 +417,21 @@
   <div id="footer-slot"></div>
   <script src="js/global.js"></script>
   <script src="js/canvas.js"></script>
+  <script>
+  (function(){
+    var iframe = document.getElementById('livebook-video');
+    if (!iframe) return;
+    var played = false;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !played) {
+          played = true;
+          iframe.src += '&autoplay=1';
+        }
+      });
+    }, {threshold: 0.4});
+    observer.observe(iframe);
+  })();
+  </script>
 </body>
 </html>

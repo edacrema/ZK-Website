@@ -316,6 +316,7 @@
   .split.reverse { direction:ltr }
   .compare-grid { grid-template-columns:1fr }
   .features-grid { grid-template-columns:1fr }
+  .owl-mascot { display:none }
 }
 
 @media(max-width:640px) {
@@ -323,4 +324,11 @@
   .steps-flow { grid-template-columns:1fr }
   .stats-row { grid-template-columns:1fr }
   .highlight-block { padding:32px 24px }
+  .pipeline { flex-wrap:wrap; justify-content:center; gap:16px }
+  .pipe-arrow { display:none }
+  .pipe-node { min-width:90px }
+  .diagram-wrap { padding:20px }
+  .diagram-wrap svg { max-width:100% }
+  .cta-banner { padding:56px 24px }
+  .owl-mascot { display:none }
 }
