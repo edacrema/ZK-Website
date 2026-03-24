@@ -47,7 +47,7 @@ function initLang() {
   if (!stored) {
     // Auto-detect from domain: .com → English, everything else → Italian
     var host = window.location.hostname;
-    stored = (host.indexOf('zetakappa.com') !== -1) ? 'en' : 'it';
+    stored = (host.indexOf('zetakappa.ai') !== -1) ? 'en' : 'it';
   }
   applyLang(stored);
 }
