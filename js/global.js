@@ -43,7 +43,12 @@ function initNav() {
 
 /* ── LANGUAGE SYSTEM ── */
 function initLang() {
-  const stored = localStorage.getItem('zkLang') || 'it';
+  var stored = localStorage.getItem('zkLang');
+  if (!stored) {
+    // Auto-detect from domain: .com → English, everything else → Italian
+    var host = window.location.hostname;
+    stored = (host.indexOf('zetakappa.com') !== -1) ? 'en' : 'it';
+  }
   applyLang(stored);
 }
 
