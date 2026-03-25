@@ -49,22 +49,104 @@
 }
 @keyframes sb { 0%,100%{opacity:.25} 50%{opacity:.85} }
 
-/* ── TICKER ── */
-.ticker-wrap {
+/* ── NEWS STRIP ── */
+.news-strip {
   position:relative; z-index:1;
   background:var(--deep);
   border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  overflow:hidden; padding:16px 0;
+  padding:48px 56px;
 }
-.ticker-track { display:flex; width:max-content; animation:tk 32s linear infinite }
-.ticker-item {
-  font-family:var(--M); font-size:.65rem; letter-spacing:.11em;
-  text-transform:uppercase; color:var(--dim2);
-  padding:0 40px; white-space:nowrap;
-  display:flex; align-items:center; gap:16px;
+.news-header {
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1360px; margin:0 auto 28px;
 }
-.ticker-dot { width:3px; height:3px; border-radius:50%; background:var(--teal); opacity:.6 }
-@keyframes tk { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.news-label {
+  font-family:var(--M); font-size:.62rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--teal);
+  display:flex; align-items:center; gap:12px;
+}
+.news-label::before { content:''; width:20px; height:1px; background:var(--teal) }
+.news-dots { display:flex; gap:10px }
+.news-dot {
+  width:10px; height:10px; border-radius:50%; border:1.5px solid var(--dim2);
+  background:transparent; cursor:pointer; padding:0;
+  transition:background .25s, border-color .25s, transform .2s;
+}
+.news-dot.active { background:var(--teal); border-color:var(--teal); transform:scale(1.2) }
+.news-dot:hover  { border-color:var(--teal) }
+
+.news-carousel {
+  max-width:1360px; margin:0 auto; overflow:hidden; border-radius:16px;
+}
+.news-track {
+  display:flex; transition:transform .6s cubic-bezier(.4,0,.2,1);
+}
+.news-card {
+  min-width:100%; display:grid; grid-template-columns:1fr 1fr;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; overflow:hidden;
+  text-decoration:none; color:inherit; cursor:default;
+}
+a.news-card { cursor:pointer }
+
+.news-img {
+  width:100%; height:100%; min-height:280px; overflow:hidden;
+  background:var(--deep);
+  display:flex; align-items:center; justify-content:center;
+}
+.news-img img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .5s;
+}
+a.news-card:hover .news-img img { transform:scale(1.04) }
+.news-img-icon { background:var(--surface) }
+.news-img-icon img {
+  width:80px; height:auto; object-fit:contain;
+}
+
+.news-body {
+  padding:40px 48px;
+  display:flex; flex-direction:column; justify-content:center; gap:16px;
+}
+.news-badge {
+  font-family:var(--M); font-size:.6rem; letter-spacing:.1em;
+  text-transform:uppercase; padding:5px 12px; border-radius:6px;
+  width:fit-content;
+}
+.nb-violet { background:rgba(108,99,255,.1); color:var(--violet) }
+.nb-teal   { background:rgba(0,184,148,.1);  color:var(--teal) }
+.nb-coral  { background:rgba(255,107,107,.1); color:var(--coral) }
+.news-title {
+  font-family:var(--D); font-size:clamp(1.2rem,2vw,1.6rem); font-weight:700;
+  letter-spacing:-.02em; line-height:1.25;
+}
+.news-desc {
+  font-family:var(--I); font-size:1rem; color:var(--dim);
+  line-height:1.7; max-width:50ch;
+}
+.news-cta {
+  font-family:var(--M); font-size:.72rem; letter-spacing:.06em;
+  color:var(--dim2); display:flex; align-items:center; gap:8px;
+  margin-top:8px; transition:color .25s;
+}
+.news-arrow { transition:transform .25s }
+a.news-card:hover .news-cta   { color:var(--white) }
+a.news-card:hover .news-arrow { transform:translateX(5px) }
+a.nc-violet:hover .news-cta { color:var(--violet) }
+a.nc-teal:hover   .news-cta { color:var(--teal) }
+a.nc-coral:hover  .news-cta { color:var(--coral) }
+
+@media(max-width:960px) {
+  .news-strip { padding:36px 32px }
+  .news-card { grid-template-columns:1fr; }
+  .news-img { min-height:200px }
+  .news-body { padding:28px 28px }
+}
+@media(max-width:640px) {
+  .news-strip { padding:28px 20px }
+  .news-img { min-height:160px }
+  .news-body { padding:24px 20px }
+}
 
 /* ── PILLARS ── */
 #attivita { background:var(--deep); border-top:1px solid var(--border); border-bottom:1px solid var(--border) }

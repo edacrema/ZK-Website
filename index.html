@@ -82,30 +82,109 @@
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item"><span class="ticker-dot"></span>Wisdom of the Crowd</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Simulazione Multi-Agente</span><span data-en>Multi-Agent Simulation</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Forecasting Collettivo</span><span data-en>Collective Forecasting</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Triple Truth System</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Modelli Survey Sintetici</span><span data-en>Synthetic Survey Models</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Comportamento Emergente</span><span data-en>Emergent Behavior</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Complexity Science</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>AI Training Infrastructure</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Narrazione Procedurale</span><span data-en>Procedural Narrative</span></span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item"><span class="ticker-dot"></span>Wisdom of the Crowd</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Simulazione Multi-Agente</span><span data-en>Multi-Agent Simulation</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Forecasting Collettivo</span><span data-en>Collective Forecasting</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Triple Truth System</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Modelli Survey Sintetici</span><span data-en>Synthetic Survey Models</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Comportamento Emergente</span><span data-en>Emergent Behavior</span></span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Complexity Science</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>AI Training Infrastructure</span>
-    <span class="ticker-item"><span class="ticker-dot"></span><span data-it>Narrazione Procedurale</span><span data-en>Procedural Narrative</span></span>
+<!-- NEWS STRIP -->
+<section class="news-strip">
+  <div class="news-header">
+    <div class="news-label">
+      <span data-it>Ultime Novità</span>
+      <span data-en>Latest News</span>
+    </div>
+    <div class="news-dots">
+      <button class="news-dot active" data-slide="0"></button>
+      <button class="news-dot" data-slide="1"></button>
+      <button class="news-dot" data-slide="2"></button>
+    </div>
   </div>
-</div>
+  <div class="news-carousel">
+    <div class="news-track">
+
+      <a href="https://ravenmoor-ui.onrender.com/" target="_blank" rel="noopener" class="news-card nc-violet">
+        <div class="news-img">
+          <img src="images/intestazione.jpg" alt="Ravenmoor" loading="lazy">
+        </div>
+        <div class="news-body">
+          <span class="news-badge nb-violet">ALPHA TEST</span>
+          <h3 class="news-title">
+            <span data-it>Ravenmoor: aperto il secondo Alpha Test</span>
+            <span data-en>Ravenmoor: second Alpha Test now open</span>
+          </h3>
+          <p class="news-desc">
+            <span data-it>Un thriller gotico con 8 NPC autonomi. Il mondo vive anche dove non guardi. Provalo ora.</span>
+            <span data-en>A gothic thriller with 8 autonomous NPCs. The world lives even where you're not looking. Try it now.</span>
+          </p>
+          <span class="news-cta">
+            <span data-it>Prova l'alpha</span>
+            <span data-en>Try the alpha</span>
+            <span class="news-arrow">→</span>
+          </span>
+        </div>
+      </a>
+
+      <div class="news-card nc-teal">
+        <div class="news-img">
+          <img src="images/BrainStormLogo.png" alt="BrainStorm" loading="lazy">
+        </div>
+        <div class="news-body">
+          <span class="news-badge nb-teal">COMING SOON</span>
+          <h3 class="news-title">
+            <span data-it>BrainStorm: primo Alpha Test in arrivo</span>
+            <span data-en>BrainStorm: first Alpha Test coming soon</span>
+          </h3>
+          <p class="news-desc">
+            <span data-it>Il nostro engine di strategic foresight per la corporate intelligence. Esperti AI deliberano, contestano, convergono.</span>
+            <span data-en>Our strategic foresight engine for corporate intelligence. AI experts deliberate, challenge, converge.</span>
+          </p>
+        </div>
+      </div>
+
+      <a href="https://zetakappa.substack.com/p/goodbye-human-2-lai-e-diecimila-anni" target="_blank" rel="noopener" class="news-card nc-coral">
+        <div class="news-img news-img-icon">
+          <img src="images/Logo White_.png" alt="Megatrend" loading="lazy">
+        </div>
+        <div class="news-body">
+          <span class="news-badge nb-coral">MEGATREND</span>
+          <h3 class="news-title">Goodbye Human #2: L'AI e diecimila anni di outsourcing mentale</h3>
+          <p class="news-desc">
+            <span data-it>L'ultimo numero della nostra newsletter sulle tendenze che ridefiniscono il futuro.</span>
+            <span data-en>The latest issue of our newsletter on the trends reshaping the future.</span>
+          </p>
+          <span class="news-cta">
+            <span data-it>Leggi su Substack</span>
+            <span data-en>Read on Substack</span>
+            <span class="news-arrow">→</span>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const track = document.querySelector('.news-track');
+  const cards = track.querySelectorAll('.news-card');
+  const dots  = document.querySelectorAll('.news-dot');
+  let cur = 0, timer;
+
+  function goTo(i){
+    cur = i;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach((d,j) => d.classList.toggle('active', j === cur));
+  }
+
+  function next(){ goTo((cur + 1) % cards.length) }
+
+  function startAuto(){ timer = setInterval(next, 5000) }
+  function resetAuto(){ clearInterval(timer); startAuto() }
+
+  dots.forEach(d => d.addEventListener('click', function(){
+    goTo(+this.dataset.slide); resetAuto();
+  }));
+
+  startAuto();
+})();
+</script>
 
 <!-- CORE ACTIVITIES -->
 <section id="attivita">
