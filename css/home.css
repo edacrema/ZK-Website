@@ -76,8 +76,21 @@
 .news-dot:hover  { border-color:var(--teal) }
 
 .news-carousel {
+  position:relative;
   max-width:1360px; margin:0 auto; overflow:hidden; border-radius:16px;
 }
+.news-nav {
+  position:absolute; top:50%; transform:translateY(-50%);
+  z-index:3; width:44px; height:44px; border-radius:50%;
+  border:1px solid var(--border); background:rgba(10,10,18,.75);
+  color:var(--dim2); font-size:1.5rem; line-height:1;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  transition:background .25s, color .25s, border-color .25s, opacity .25s;
+}
+.news-nav:hover { background:var(--card); color:var(--white); border-color:var(--teal) }
+.news-prev { left:16px }
+.news-next { right:16px }
 .news-track {
   display:flex; transition:transform .6s cubic-bezier(.4,0,.2,1);
 }
@@ -146,6 +159,9 @@ a.nc-coral:hover  .news-cta { color:var(--coral) }
   .news-strip { padding:28px 20px }
   .news-img { min-height:160px }
   .news-body { padding:24px 20px }
+  .news-nav { width:36px; height:36px; font-size:1.2rem }
+  .news-prev { left:8px }
+  .news-next { right:8px }
 }
 
 /* ── PILLARS ── */

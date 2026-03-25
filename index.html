@@ -96,6 +96,8 @@
     </div>
   </div>
   <div class="news-carousel">
+    <button class="news-nav news-prev" aria-label="Previous">&#8249;</button>
+    <button class="news-nav news-next" aria-label="Next">&#8250;</button>
     <div class="news-track">
 
       <a href="https://ravenmoor-ui.onrender.com/" target="_blank" rel="noopener" class="news-card nc-violet">
@@ -181,6 +183,13 @@
   dots.forEach(d => d.addEventListener('click', function(){
     goTo(+this.dataset.slide); resetAuto();
   }));
+
+  document.querySelector('.news-prev').addEventListener('click', function(){
+    goTo((cur - 1 + cards.length) % cards.length); resetAuto();
+  });
+  document.querySelector('.news-next').addEventListener('click', function(){
+    goTo((cur + 1) % cards.length); resetAuto();
+  });
 
   startAuto();
 })();
