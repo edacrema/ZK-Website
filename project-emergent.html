@@ -36,6 +36,11 @@
           <span data-it>Sistemi AI multi-agente dove il comportamento collettivo non è programmato — <em>emerge</em>. Dall'intrattenimento all'enterprise, un'unica architettura alimenta agenti autonomi con obiettivi, credenze e la capacità di sorprendere.</span>
           <span data-en>Multi-agent AI systems where collective behavior isn't programmed — it <em>emerges</em>. From entertainment to enterprise, one architecture powers autonomous agents with goals, beliefs, and the capacity to surprise.</span>
         </p>
+        <button onclick="openSlideshow()" class="ess-trigger-btn">
+          <span class="ess-trigger-play">&#9655;</span>
+          <span data-it>Che cos'è Emergent.engine?</span>
+          <span data-en>What is Emergent.engine?</span>
+        </button>
         <div class="hero-cta">
           <a href="#ravenmoor" class="btn-primary" style="background:var(--violet)">
             <span data-it>Scopri Ravenmoor</span>
@@ -444,9 +449,339 @@
     </a>
   </section>
 
+  <!-- ═══════════════ EMERGENT SLIDESHOW OVERLAY ═══════════════ -->
+  <div id="emergent-slideshow" class="ess-overlay">
+    <button class="ess-close" aria-label="Close">&times;</button>
+    <button class="ess-arrow ess-prev" aria-label="Previous">&#8592;</button>
+    <button class="ess-arrow ess-next" aria-label="Next">&#8594;</button>
+    <div class="ess-counter"><span id="ess-current">1</span> / 10</div>
+    <div class="ess-progress"><div class="ess-progress-bar" id="ess-progress-bar"></div></div>
+
+    <!-- SLIDE 1 — Opening -->
+    <div class="ess-slide" data-bg="images/emergent/scene_01.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>C'è una domanda che la scienza non ha mai smesso di porsi.</span>
+          <span data-en>There is a question science has never stopped asking.</span>
+        </p>
+        <p>
+          <span data-it>Come nascono le cose che nessuno ha progettato?</span>
+          <span data-en>How do things arise that no one designed?</span>
+        </p>
+        <p>
+          <span data-it>Come si forma un mercato, una città, una rivoluzione, un'idea?</span>
+          <span data-en>How does a market take shape, a city, a revolution, an idea?</span>
+        </p>
+        <p>
+          <span data-it>Non per decreto. Non per piano. Per <strong>interazione</strong>.</span>
+          <span data-en>Not by decree. Not by plan. Through <strong>interaction</strong>.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 — Le Gerarchie -->
+    <div class="ess-slide" data-bg="images/emergent/scene_02.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>Per millenni, abbiamo risposto alla complessità con la gerarchia.</span>
+          <span data-en>For millennia, we have answered complexity with hierarchy.</span>
+        </p>
+        <p>
+          <span data-it>Un generale comanda. Un CEO decide. Un organigramma stabilisce chi parla con chi — e cosa può dire.</span>
+          <span data-en>A general commands. A CEO decides. An org chart dictates who speaks to whom — and what they can say.</span>
+        </p>
+        <p>
+          <span data-it>La gerarchia funziona. Ma ha un costo nascosto: <strong>la narrativa è già scritta</strong>. I ruoli sono fissi. L'esito, in qualche modo, è già presupposto.</span>
+          <span data-en>Hierarchy works. But it carries a hidden cost: <strong>the narrative is already written</strong>. Roles are fixed. The outcome, somehow, is already assumed.</span>
+        </p>
+        <p>
+          <span data-it>Un'organizzazione gerarchica non scopre — <strong>esegue</strong>.</span>
+          <span data-en>A hierarchical organization does not discover — it <strong>executes</strong>.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 — Gli Agenti AI -->
+    <div class="ess-slide" data-bg="images/emergent/scene_03.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>Con l'intelligenza artificiale, sembrava che le cose potessero cambiare.</span>
+          <span data-en>With artificial intelligence, it seemed things could change.</span>
+        </p>
+        <p>
+          <span data-it>I moderni sistemi multi-agente mettono più AI a lavorare insieme: un orchestratore coordina, i subagenti eseguono compiti specifici, ciascuno nel proprio ruolo.</span>
+          <span data-en>Modern multi-agent systems put multiple AIs to work together: an orchestrator coordinates, sub-agents execute specific tasks, each in their assigned role.</span>
+        </p>
+        <p>
+          <span data-it>Più sofisticato. Ma il principio è lo stesso.</span>
+          <span data-en>More sophisticated. But the principle is the same.</span>
+        </p>
+        <p>
+          <span data-it>C'è ancora un copione. Ancora una gerarchia. I ruoli sono decisi in anticipo. L'output è, in larga misura, <strong>predeterminato</strong>.</span>
+          <span data-en>There is still a script. Still a hierarchy. Roles are decided in advance. The output is, to a large extent, <strong>predetermined</strong>.</span>
+        </p>
+        <p>
+          <span data-it>Abbiamo automatizzato l'esecuzione. Non abbiamo toccato l'<strong>emergenza</strong>.</span>
+          <span data-en>We have automated execution. We have not touched <strong>emergence</strong>.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 — Complexity Science -->
+    <div class="ess-slide" data-bg="images/emergent/scene_04.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>La scienza della complessità offre una risposta diversa.</span>
+          <span data-en>Complexity science offers a different answer.</span>
+        </p>
+        <p>
+          <span data-it>Studia sistemi dove nessuno ha il controllo totale — e dove, nonostante questo, o forse <strong>proprio per questo</strong>, emergono comportamenti di ricchezza straordinaria.</span>
+          <span data-en>It studies systems where no one has total control — and where, despite this, or perhaps <strong>precisely because of it</strong>, behaviors of extraordinary richness arise.</span>
+        </p>
+        <p>
+          <span data-it>I mercati finanziari. Gli ecosistemi. Le città. Le epidemie. Le rivoluzioni culturali.</span>
+          <span data-en>Financial markets. Ecosystems. Cities. Epidemics. Cultural revolutions.</span>
+        </p>
+        <p>
+          <span data-it>In questi sistemi, il risultato collettivo non è la somma delle intenzioni individuali. È qualcosa che nessuno aveva previsto. Qualcosa che <strong>emerge</strong>.</span>
+          <span data-en>In these systems, the collective outcome is not the sum of individual intentions. It is something no one predicted. Something that <strong>emerges</strong>.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 — Agent-Based Models -->
+    <div class="ess-slide" data-bg="images/emergent/scene_05.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>Negli anni Novanta, i ricercatori crearono uno strumento nuovo: gli Agent-Based Models.</span>
+          <span data-en>In the 1990s, researchers created a new instrument: Agent-Based Models.</span>
+        </p>
+        <p>
+          <span data-it>L'idea era semplice quanto radicale: costruisci un insieme di <strong>agenti autonomi</strong>, ciascuno con le proprie regole, credenze, obiettivi. Lasciali interagire liberamente. Poi <strong>osserva cosa succede</strong>.</span>
+          <span data-en>The idea was as simple as it was radical: build a set of <strong>autonomous agents</strong>, each with their own rules, beliefs, goals. Let them interact freely. Then <strong>observe what happens</strong>.</span>
+        </p>
+        <p>
+          <span data-it>Nessuno prescrive il risultato. Nessuno coordina dall'alto.</span>
+          <span data-en>No one prescribes the outcome. No one coordinates from above.</span>
+        </p>
+        <p>
+          <span data-it>Eppure dalle interazioni emergono segregazioni urbane, crolli di mercato, diffusioni epidemiche — <strong>fenomeni reali</strong>, riprodotti dal basso.</span>
+          <span data-en>Yet from their interactions emerge urban segregation, market crashes, epidemic spread — <strong>real phenomena</strong>, reproduced from the bottom up.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 — Ogni Agente è un Mondo -->
+    <div class="ess-slide" data-bg="images/emergent/scene_06.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>Il segreto degli Agent-Based Models sta in una cosa precisa:</span>
+          <span data-en>The power of Agent-Based Models lies in one precise thing:</span>
+        </p>
+        <p>
+          <span data-it>Ogni agente ha <strong>credenze proprie</strong> su come funziona il mondo — che possono essere sbagliate. Ha <strong>conoscenze proprie</strong> — parziali, incomplete, diverse da quelle degli altri. Ha <strong>obiettivi propri</strong> — che possono confliggere con quelli altrui.</span>
+          <span data-en>Each agent holds <strong>its own beliefs</strong> about how the world works — which may be wrong. Has <strong>its own knowledge</strong> — partial, incomplete, different from the others'. Has <strong>its own goals</strong> — which may clash with everyone else's.</span>
+        </p>
+        <p>
+          <span data-it>Ha persino <strong>stati emotivi</strong> che influenzano le sue scelte.</span>
+          <span data-en>It even has <strong>emotional states</strong> that shape its decisions.</span>
+        </p>
+        <p>
+          <span data-it>Da queste diversità irriducibili — dall'attrito e dalla sintesi, dagli accordi e dai disaccordi — nasce qualcosa che nessun singolo agente aveva pianificato.</span>
+          <span data-en>From these irreducible differences — from friction and synthesis, from agreement and disagreement — something arises that no single agent had planned.</span>
+        </p>
+        <p>
+          <span data-it><strong>Il risultato appartiene al sistema. Non ai singoli individui.</strong></span>
+          <span data-en><strong>The outcome belongs to the system. Not to any individual.</strong></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 — EMERGENT.engine -->
+    <div class="ess-slide" data-bg="images/emergent/scene_07.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>E se gli agenti di un modello non fossero più simboli né regole programmate — ma intelligenze artificiali vere?</span>
+          <span data-en>What if the agents in a model were no longer symbols or programmed rules — but real artificial intelligences?</span>
+        </p>
+        <p class="ess-em">
+          <span data-it>Intelligenze capaci di ragionare, formare credenze, elaborare strategie, ingannarsi a vicenda, aggiornarsi quando i fatti cambiano?</span>
+          <span data-en>Intelligences capable of reasoning, forming beliefs, devising strategies, deceiving one another, updating when facts change?</span>
+        </p>
+        <p class="ess-title">
+          <span data-it>Questo è EMERGENT.engine.</span>
+          <span data-en>This is EMERGENT.engine.</span>
+        </p>
+        <p>
+          <span data-it>Una piattaforma dove l'agent-based modeling incontra i Large Language Models. Dove ogni agente possiede una costituzione cognitiva propria: una visione del mondo, una mappa di interessi, una soglia di fiducia, un proprio modo di aggiornare le credenze.</span>
+          <span data-en>A platform where agent-based modeling meets Large Language Models. Where each agent has its own cognitive constitution: a worldview, a map of interests, a threshold of trust, its own way of updating beliefs.</span>
+        </p>
+        <p>
+          <span data-it>E dove esseri umani e intelligenze artificiali abitano lo stesso sistema — <strong>insieme</strong>.</span>
+          <span data-en>Where humans and artificial intelligences inhabit the same system — <strong>together</strong>.</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 — Cosa Produce l'Emergenza -->
+    <div class="ess-slide" data-bg="images/emergent/scene_08.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>In un sistema emergente, nessuno sa in anticipo cosa accadrà.</span>
+          <span data-en>In an emergent system, no one knows in advance what will happen.</span>
+        </p>
+        <p>
+          <span data-it>Un'economia virtuale può collassare — perché gli agenti hanno perso fiducia reciproca, non perché qualcuno lo aveva previsto.</span>
+          <span data-en>A virtual economy may collapse — because agents lost mutual trust, not because anyone scripted it.</span>
+        </p>
+        <p>
+          <span data-it>Una trattativa diplomatica può trovare un accordo inatteso — perché la sequenza delle interazioni ha aperto uno spazio che nessun negoziatore aveva immaginato.</span>
+          <span data-en>A diplomatic negotiation may reach an unexpected accord — because the sequence of interactions opened a space no negotiator had imagined.</span>
+        </p>
+        <p>
+          <span data-it>Un team di esperti può convergere su un'idea che nessuno di loro avrebbe concepito da solo.</span>
+          <span data-en>A team of experts may converge on an idea none of them would have conceived alone.</span>
+        </p>
+        <p>
+          <span data-it><strong>I risultati sono reali proprio perché non erano garantiti.</strong></span>
+          <span data-en><strong>The results are real precisely because they were never guaranteed.</strong></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 9 — Same Engine, Different Scenario -->
+    <div class="ess-slide" data-bg="images/emergent/scene_09.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>Lo stesso motore.</span>
+          <span data-en>The same engine.</span>
+        </p>
+        <p class="ess-em">
+          <span data-it>Una negoziazione diplomatica. Un mistero da risolvere. Una sessione di brainstorming con esperti che la pensano diversamente. Una simulazione di policy con attori che perseguono interessi opposti.</span>
+          <span data-en>A diplomatic negotiation. A mystery to solve. A brainstorming session with experts who disagree. A policy simulation with actors pursuing opposing interests.</span>
+        </p>
+        <p class="ess-em">
+          <span data-it>Scenari diversi. Agenti diversi. Esiti imprevedibili. Ogni volta.</span>
+          <span data-en>Different scenarios. Different agents. Unpredictable outcomes. Every time.</span>
+        </p>
+        <p>
+          <span data-it>EMERGENT.engine è un'infrastruttura per costruire mondi dove l'esito emerge davvero — non viene eseguito.</span>
+          <span data-en>EMERGENT.engine is an infrastructure for building worlds where outcomes truly emerge — they are not executed.</span>
+        </p>
+        <p>
+          <span data-it>Non sappiamo cosa succederà.</span>
+          <span data-en>We don't know what will happen.</span>
+        </p>
+        <p>
+          <span data-it><strong>È esattamente questo il punto.</strong></span>
+          <span data-en><strong>That is exactly the point.</strong></span>
+        </p>
+      </div>
+    </div>
+
+    <!-- SLIDE 10 — Call to Action -->
+    <div class="ess-slide" data-bg="images/emergent/scene_10.png">
+      <div class="ess-text">
+        <p class="ess-em">
+          <span data-it>L'emergenza non è un concetto astratto. È qualcosa che si può osservare.</span>
+          <span data-en>Emergence is not an abstract concept. It is something you can observe.</span>
+        </p>
+        <p>
+          <span data-it>Abbiamo costruito due mondi in cui entrare.</span>
+          <span data-en>We have built two worlds you can enter.</span>
+        </p>
+        <div class="ess-products">
+          <div class="ess-product">
+            <strong>
+              <span data-it>I Misteri di Ravenmoor</span>
+              <span data-en>The Mysteries of Ravenmoor</span>
+            </strong>
+            <span data-it>Un thriller vivo, investigativo e rigiocabile. Otto personaggi AI autonomi abitano una villa vittoriana. Nessuno di loro ti aspettava. La storia non è scritta: emerge da quello che farai.</span>
+            <span data-en>A living, investigative, replayable thriller. Eight autonomous AI characters inhabit a Victorian manor. None of them were expecting you. The story isn't written: it emerges from what you do.</span>
+            <a href="https://www.ravenmoor.net" target="_blank" rel="noopener" class="ess-link">ravenmoor.net &#8599;</a>
+          </div>
+          <div class="ess-product">
+            <strong>BrainStorm</strong>
+            <span data-it>Deliberazione strategica con panel di esperti AI che non sono d'accordo. Ogni esperto ha credenze, metodologia, bias propri. Il risultato non è un riassunto — è un confronto reale dove le posizioni si sfidano, si concedono, si riformulano.</span>
+            <span data-en>Strategic deliberation with a panel of AI experts who disagree. Each expert has their own beliefs, methodology, biases. The result is not a summary — it is a real debate where positions clash, concede, and reshape themselves.</span>
+            <a href="https://www.brain-storm.net" target="_blank" rel="noopener" class="ess-link">brain-storm.net &#8599;</a>
+          </div>
+        </div>
+        <p>
+          <span data-it><strong>Stesso motore. Mondi diversi. Ogni volta, qualcosa che nessuno aveva scritto.</strong></span>
+          <span data-en><strong>Same engine. Different worlds. Every time, something no one had written.</strong></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div id="footer-slot"></div>
   <script src="js/global.js"></script>
   <script src="js/canvas.js"></script>
+  <script>
+  /* ── EMERGENT SLIDESHOW ── */
+  (function(){
+    var overlay = document.getElementById('emergent-slideshow');
+    if (!overlay) return;
+    var slides  = overlay.querySelectorAll('.ess-slide');
+    var counter = document.getElementById('ess-current');
+    var bar     = document.getElementById('ess-progress-bar');
+    var total   = slides.length;
+    var current = 0;
+
+    function loadBg(i) {
+      var s = slides[i];
+      if (s && s.dataset.bg && !s.style.backgroundImage) {
+        s.style.backgroundImage = 'url(' + s.dataset.bg + ')';
+      }
+    }
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      current = ((n % total) + total) % total;
+      loadBg(current);
+      loadBg((current + 1) % total);
+      void slides[current].offsetWidth; // force reflow for animation restart
+      slides[current].classList.add('active');
+      counter.textContent = current + 1;
+      bar.style.width = ((current + 1) / total * 100) + '%';
+    }
+
+    window.openSlideshow = function() {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      loadBg(0);
+      loadBg(1);
+      goTo(0);
+    };
+
+    function closeSlideshow() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      slides[current].classList.remove('active');
+    }
+
+    overlay.querySelector('.ess-close').addEventListener('click', closeSlideshow);
+    overlay.querySelector('.ess-prev').addEventListener('click', function(){ goTo(current - 1) });
+    overlay.querySelector('.ess-next').addEventListener('click', function(){ goTo(current + 1) });
+
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeSlideshow();
+      if (e.key === 'ArrowLeft')  goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    /* Touch swipe support */
+    var touchX = 0;
+    overlay.addEventListener('touchstart', function(e){ touchX = e.changedTouches[0].screenX }, {passive:true});
+    overlay.addEventListener('touchend', function(e){
+      var dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) > 50) { dx > 0 ? goTo(current - 1) : goTo(current + 1) }
+    }, {passive:true});
+  })();
+  </script>
+
   <script>
   (function(){
     var iframe = document.getElementById('livebook-video');
