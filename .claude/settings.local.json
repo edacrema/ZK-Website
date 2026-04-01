@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:fantaforecasting.it)",
-      "Bash(grep -E \"\\\\.\\(md|txt|json|pdf\\)$\")"
+      "Bash(grep -E \"\\\\.\\(md|txt|json|pdf\\)$\")",
+      "WebFetch(domain:zetakappa.substack.com)",
+      "Bash(du -sh images/*.jpg images/*.png)",
+      "Bash(python:*)",
+      "Read(//c/Users/eugen/**)",
+      "Bash(find . -name *emergent* -type f)"
     ]
   }
 }
